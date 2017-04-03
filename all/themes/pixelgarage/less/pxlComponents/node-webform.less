@@ -1,0 +1,56 @@
+/*
+ *  Node / block webform component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+//
+//
+// webform
+.node.node-webform {
+  margin-bottom: 50px;
+
+  .field-name-newsletter & {
+    margin: 0;
+  }
+
+  .row {
+    .col-sm-12, .col-sm-6 {
+
+      .field-name-title {
+        h2 {
+          #pxl-mixins.title();
+        }
+      }
+
+      .field-name-field-image {
+        margin-top: 20px;
+
+        img {
+          margin: 0 auto;
+          width: 90%;
+          height: auto;
+        }
+      }
+
+      .field-name-body {
+        margin: 0 0 @node-field-margin-bottom;
+        #pxl-mixins.wysiwyg-body();
+      }
+
+      .webform-client-form {
+        // see webform-xxx.less
+      }
+    }
+  }
+}
+

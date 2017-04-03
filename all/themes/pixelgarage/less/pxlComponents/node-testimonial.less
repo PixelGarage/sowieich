@@ -1,0 +1,34 @@
+/*
+ *  Node testimonial component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-testimonial.view-mode-full,
+.node.node-testimonial.view-mode-default {
+  >.row {
+    >div.col-sm-12 {
+
+      >.field-name-title {
+        h2 {
+          #pxl-mixins.title();
+        }
+      }
+
+      >.field-name-body {
+        margin: 0 0 80px;
+        #pxl-mixins.wysiwyg-body();
+      }
+
+    }
+  }
+}

@@ -1,0 +1,37 @@
+/*
+ *  Text paragraph component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+// Component
+// -------------------------
+.entity-paragraphs-item.paragraphs-item-text-paragraph {
+  .row {
+    .col-sm-12 {
+      .field-name-field-title {
+        .field-item {
+          #pxl-mixins.title();
+        }
+      }
+
+      .field-name-field-text {
+        .field-item {
+          #pxl-mixins.wysiwyg-body();
+          #pxl-mixins.hyphenate;
+
+          @media @tablet {
+            .content-columns(2, 24px);
+          }
+        }
+      }
+    }
+  }
+
+}

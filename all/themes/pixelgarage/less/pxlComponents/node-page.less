@@ -1,0 +1,76 @@
+/*
+ *  Node page component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-page.view-mode-full,
+.node.node-page.view-mode-default {
+  >.row {
+    >div.col-sm-12 {
+
+      >.field-name-title {
+        h2 {
+          #pxl-mixins.title();
+        }
+      }
+
+      >.field-name-body {
+        margin: 0 0 30px;
+        #pxl-mixins.wysiwyg-body();
+      }
+
+      .front & {
+        >.field-name-body {
+          padding: 30px 20px;
+          background: #fff url(../images/bg_highlighted.png) repeat top left / 25%;
+          #pxl-mixins.box-shadow(@pxl-box-shadow);
+
+          p {
+            text-align: center;
+          }
+
+          @media @narrow {
+            padding: 30px 50px;
+          }
+          @media @tablet {
+            padding: 30px 80px;
+          }
+          @media @normal {
+            padding: 30px 100px;
+          }
+          @media @wide {
+            padding: 30px 150px;
+          }
+        }
+      }
+
+      >.paragraphs-items {
+        >.field-name-field-paragraphs {
+          >.field-items {
+            >.field-item:not(:last-child) {
+              margin-bottom: @paragraph-margin-bottom;
+
+              @media @tablet {
+                margin-bottom: @paragraph-margin-bottom-large;
+              }
+
+
+              // see paragraph-item-... less files
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

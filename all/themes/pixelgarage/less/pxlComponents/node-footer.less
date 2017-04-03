@@ -1,0 +1,33 @@
+/*
+ *  Node footer component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-footer.view-mode-default,
+.node.node-footer.view-mode-full {
+  >.row {
+    >div.col-sm-12 {
+
+      >.field-name-title {
+        h2 {
+          #pxl-mixins.title();
+        }
+      }
+
+      >.field-name-body {
+        #pxl-mixins.wysiwyg-body();
+      }
+
+    }
+  }
+}

@@ -1,0 +1,129 @@
+/*
+ *  Node post component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+// General settings
+// -------------------------
+//
+// Teaser Post
+.node.node-post.view-mode-teaser {
+  position: relative;
+  margin: 0;
+  padding-bottom: 125%;
+  width: 100%;
+  height: 0;
+  overflow: visible;
+  background-color: white;
+
+  div.row {
+    margin: 0;
+
+    div.col-sm-12 {
+      position: static;
+      padding: 0;
+
+      .field-name-field-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .field-name-field-quote {
+        position: absolute;
+        left: 5%;
+        bottom: 2.5%;
+        width: 90%;
+        min-height: 15%;
+
+        .field-item {
+          #pxl-mixins.text();
+          text-align: center;
+
+          &:before {
+            content: '«';
+            #pxl-mixins.text();
+            color: @pxl-color-violet;
+          }
+          &:after {
+            content: '»';
+            #pxl-mixins.text();
+            color: @pxl-color-violet;
+          }
+        }
+      }
+
+      .field-name-field-your-name {
+        position: absolute;
+        bottom: 28%;
+        left: -10px;
+        padding: 7px 20px;
+        background-color: @pxl-color-violet;
+
+        .field-item {
+          width: auto;
+          #pxl-mixins.text();
+          #pxl-mixins.font-size-responsive();
+          color: @pxl-color-white;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+
+//
+// full  mode
+.node.node-post.view-mode-full,
+.node.node-post.view-mode-default {
+  position: relative;
+  margin: 0;
+  padding-bottom: 125%;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background-color: white;
+
+  div.row {
+    div.col-sm-12 {
+      padding: 0;
+
+      .field-name-field-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .field-name-field-your-name {
+        position: absolute;
+        bottom: 5%;
+        right: -10px;
+        padding: 0;
+
+        .field-item {
+          width: auto;
+          #pxl-mixins.text();
+          #pxl-mixins.font-size-responsive();
+          white-space: nowrap;
+        }
+      }
+
+      .field-name-field-quote {
+        .field-item {
+
+        }
+      }
+    }
+  }
+}
+

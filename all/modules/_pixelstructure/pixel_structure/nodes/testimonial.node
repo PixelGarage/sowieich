@@ -1,0 +1,471 @@
+<?php
+$export_time = 1491221006;
+$data = array(
+  'bundles' => array(
+    'testimonial' => (object) array(
+      'type' => 'testimonial',
+      'name' => 'Testimonial',
+      'base' => 'node_content',
+      'module' => 'node',
+      'description' => '',
+      'help' => '',
+      'has_title' => '1',
+      'title_label' => 'Name',
+      'custom' => '1',
+      'modified' => '1',
+      'locked' => '0',
+      'disabled' => '0',
+      'orig_type' => 'testimonial',
+      'disabled_changed' => FALSE,
+      'bc_entity_type' => 'node',
+    ),
+  ),
+  'fields' => array(
+    'body' => array(
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'settings' => array(),
+      'translatable' => '0',
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_body' => array(
+                'value' => 'body_value',
+                'summary' => 'body_summary',
+                'format' => 'body_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_body' => array(
+                'value' => 'body_value',
+                'summary' => 'body_summary',
+                'format' => 'body_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'field_name' => 'body',
+      'type' => 'text_with_summary',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'summary' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'page',
+          1 => 'pxltest',
+          2 => 'donate',
+          3 => 'webform',
+          4 => 'facebook_post',
+          5 => 'testimonial',
+          6 => 'twitter_user_profile',
+          7 => 'footer',
+        ),
+      ),
+    ),
+    'field_link' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'attributes' => array(
+          'target' => 'default',
+          'class' => '',
+          'rel' => '',
+        ),
+        'url' => 0,
+        'title' => 'optional',
+        'title_value' => '',
+        'title_maxlength' => 128,
+        'enable_tokens' => 1,
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_link' => array(
+                'url' => 'field_link_url',
+                'title' => 'field_link_title',
+                'attributes' => 'field_link_attributes',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_link' => array(
+                'url' => 'field_link_url',
+                'title' => 'field_link_title',
+                'attributes' => 'field_link_attributes',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_link',
+      'type' => 'link_field',
+      'module' => 'link',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'url' => array(
+          'type' => 'varchar',
+          'length' => 2048,
+          'not null' => FALSE,
+          'sortable' => TRUE,
+        ),
+        'title' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+          'sortable' => TRUE,
+        ),
+        'attributes' => array(
+          'type' => 'text',
+          'size' => 'medium',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'facebook_post',
+          1 => 'testimonial',
+        ),
+      ),
+    ),
+    'field_picture' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'uri_scheme' => 'public',
+        'default_image' => 0,
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_picture' => array(
+                'fid' => 'field_picture_fid',
+                'alt' => 'field_picture_alt',
+                'title' => 'field_picture_title',
+                'width' => 'field_picture_width',
+                'height' => 'field_picture_height',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_picture' => array(
+                'fid' => 'field_picture_fid',
+                'alt' => 'field_picture_alt',
+                'title' => 'field_picture_title',
+                'width' => 'field_picture_width',
+                'height' => 'field_picture_height',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'table' => 'file_managed',
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'field_name' => 'field_picture',
+      'type' => 'image',
+      'module' => 'image',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'fid' => array(
+          'description' => 'The {file_managed}.fid being referenced in this field.',
+          'type' => 'int',
+          'not null' => FALSE,
+          'unsigned' => TRUE,
+        ),
+        'alt' => array(
+          'description' => 'Alternative image text, for the image\'s \'alt\' attribute.',
+          'type' => 'varchar',
+          'length' => 512,
+          'not null' => FALSE,
+        ),
+        'title' => array(
+          'description' => 'Image title text, for the image\'s \'title\' attribute.',
+          'type' => 'varchar',
+          'length' => 1024,
+          'not null' => FALSE,
+        ),
+        'width' => array(
+          'description' => 'The width of the image in pixels.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+        'height' => array(
+          'description' => 'The height of the image in pixels.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'facebook_post',
+          1 => 'testimonial',
+        ),
+      ),
+    ),
+  ),
+  'instances' => array(
+    'body' => array(
+      0 => array(
+        'label' => 'Body',
+        'widget' => array(
+          'weight' => '5',
+          'type' => 'text_textarea_with_summary',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '20',
+            'summary_rows' => 5,
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '1',
+          'display_summary' => 0,
+          'better_formats' => array(
+            'allowed_formats_toggle' => 1,
+            'allowed_formats' => array(
+              'plain_text' => 'plain_text',
+              'html' => 0,
+            ),
+            'default_order_toggle' => 0,
+            'default_order_wrapper' => array(
+              'formats' => array(
+                'html' => array(
+                  'weight' => '0',
+                ),
+                'plain_text' => array(
+                  'weight' => '10',
+                ),
+              ),
+            ),
+          ),
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'hidden',
+            'type' => 'text_default',
+            'weight' => '1',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+          'teaser' => array(
+            'label' => 'hidden',
+            'type' => 'text_default',
+            'weight' => '1',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+          'full' => array(
+            'label' => 'hidden',
+            'type' => 'text_default',
+            'weight' => '2',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+        ),
+        'required' => 1,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'body',
+        'entity_type' => 'node',
+        'bundle' => 'testimonial',
+        'deleted' => '0',
+      ),
+    ),
+    'field_link' => array(
+      0 => array(
+        'label' => 'Link',
+        'widget' => array(
+          'weight' => '3',
+          'type' => 'link_field',
+          'module' => 'link',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'absolute_url' => 0,
+          'validate_url' => 0,
+          'url' => 0,
+          'title' => 'none',
+          'title_value' => '',
+          'title_label_use_field_label' => 0,
+          'title_maxlength' => '128',
+          'enable_tokens' => 1,
+          'display' => array(
+            'url_cutoff' => '100',
+          ),
+          'attributes' => array(
+            'target' => 'default',
+            'rel' => '',
+            'configurable_class' => 0,
+            'class' => '',
+            'configurable_title' => 0,
+            'title' => '',
+          ),
+          'rel_remove' => 'default',
+          'linkit' => array(
+            'enable' => 1,
+            'profile' => 'field_profile',
+            'button_text' => 'Suche',
+          ),
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '2',
+            'settings' => array(),
+          ),
+          'teaser' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '8',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Add an external (absolute) or internal URL to which this testimonial references. An internal link can be searched with the Search button.',
+        'ds_extras_field_template' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_link',
+        'entity_type' => 'node',
+        'bundle' => 'testimonial',
+        'deleted' => '0',
+      ),
+    ),
+    'field_picture' => array(
+      0 => array(
+        'label' => 'Picture',
+        'widget' => array(
+          'weight' => '4',
+          'type' => 'image_image',
+          'module' => 'image',
+          'active' => 1,
+          'settings' => array(
+            'progress_indicator' => 'throbber',
+            'preview_image_style' => 'thumbnail',
+          ),
+        ),
+        'settings' => array(
+          'file_directory' => 'images',
+          'file_extensions' => 'png gif jpg jpeg',
+          'max_filesize' => '',
+          'max_resolution' => '',
+          'min_resolution' => '',
+          'alt_field' => 0,
+          'title_field' => 0,
+          'default_image' => 0,
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'hidden',
+            'type' => 'image',
+            'weight' => '0',
+            'settings' => array(
+              'image_style' => 'testimonial',
+              'image_link' => '',
+            ),
+            'module' => 'image',
+          ),
+          'full' => array(
+            'label' => 'hidden',
+            'type' => 'image',
+            'weight' => '0',
+            'settings' => array(
+              'image_style' => 'testimonial',
+              'image_link' => '',
+            ),
+            'module' => 'image',
+          ),
+          'teaser' => array(
+            'label' => 'hidden',
+            'type' => 'image',
+            'weight' => '0',
+            'settings' => array(
+              'image_style' => 'testimonial',
+              'image_link' => '',
+            ),
+            'module' => 'image',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'ds_extras_field_template' => '',
+        'field_name' => 'field_picture',
+        'entity_type' => 'node',
+        'bundle' => 'testimonial',
+        'deleted' => '0',
+      ),
+    ),
+  ),
+);
