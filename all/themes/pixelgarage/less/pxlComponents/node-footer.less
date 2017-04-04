@@ -4,6 +4,7 @@
 
 // Variables
 // -------------------------
+@pxl-footer-margin-bt: 20px;
 
 
 // Mixins
@@ -25,7 +26,22 @@
       }
 
       >.field-name-body {
-        #pxl-mixins.wysiwyg-body();
+        .field-item {
+          img {
+            display: block;
+            overflow: hidden;
+            margin: @pxl-footer-margin-bt 0;
+            padding: 0;
+            max-width: 100%;
+            width: auto !important;
+            height: @pxl-footer-height-small - 2*@pxl-footer-margin-bt !important;
+
+            @media @tablet {
+              margin: @pxl-footer-margin-bt auto;
+              height: @pxl-footer-height - 2*@pxl-footer-margin-bt !important;
+            }
+          }
+        }
       }
 
     }

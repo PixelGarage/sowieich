@@ -10,23 +10,23 @@
 
 // label colors
 @webform-color-label: @text-color;
-@webform-color-required: @pxl-color-main;
+@webform-color-required: @pxl-color-violet;
 
 // field colors
 @webform-color-input: @text-color;
 @webform-color-input-bg: rgba(255,255,255,0.0);
 @webform-color-placeholder: @text-color-placeholder;
-@webform-color-border: @pxl-color-main;
-@webform-color-border-active: @pxl-color-main;
+@webform-color-border: @pxl-color-violet;
+@webform-color-border-active: @pxl-color-violet;
 
 // field box
 @webform-control-height: 30px;
 @webform-border-radius: 0;
-@webform-color-shadow: @pxl-color-main;
+@webform-color-shadow: @pxl-color-violet;
 
 // button colors
 @webform-color-submit: @pxl-color-body-bg;
-@webform-color-submit-bg: @pxl-color-main;
+@webform-color-submit-bg: @pxl-color-violet;
 
 
 // Mixins
@@ -301,11 +301,11 @@ form.webform-client-form {
       background-color: @webform-color-input-bg;
       .box-shadow(none);
       #pxl-mixins.placeholder();
-    }
-    input.form-text:focus, input.form-text:hover,
-    textarea:focus, textarea:hover {
-      border: 1px solid @webform-color-border-active;
-      .box-shadow(0 0 3px @webform-color-shadow inset);
+
+      &:focus, &:hover {
+        border: 1px solid @webform-color-border-active;
+        .box-shadow(0 0 3px @webform-color-shadow inset);
+      }
     }
 
     .form-textarea-wrapper {
@@ -387,6 +387,7 @@ form.webform-client-form {
       overflow-x: auto;
       white-space: nowrap;
       #pxl-mixins.border-radius(@webform-border-radius);
+      border-bottom: 1px solid @webform-color-border;
       background-color: @webform-color-input-bg;
 
       // button and label to select file

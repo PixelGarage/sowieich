@@ -1,5 +1,21 @@
 Specific Project Details:
 
+Audio/Video conversion(FFMPEG)
+==============================
+## MOV -> MP4
+ffmpeg -i test.mov -vf scale=960x540 -c:a copy -y test.mp4
+
+## WMV, AVI -> MP4
+ffmpeg -i test.wmv -c:v libx264 -crf 23 -vf scale=960x540 -c:a libfdk_aac -b:a 128k -ac 2 -y test.mp4
+
+## MP4 -> VP8/WebM
+ffmpeg -i test.mp4 -vcodec libvpx -b:v 1024k -vf scale=960x540 -y test.webm
+
+## Extract images
+ffmpeg -ss 00:00:02 -t 00:00:00.01 -i test.mp4 -r 30.0 test%03d.jpg
+
+
+
 Changes in Modules (Patches)
 ============================
 1) Libraries module patched (get version of library corrected)

@@ -72,6 +72,8 @@
  *
  * @ingroup templates
  */
+$participate_text = t('Mitmachen');
+
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="<?php print $container_class; ?>">
@@ -88,14 +90,19 @@
 
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
+        <?php if (!empty($page['navigation'])): ?>
+          <?php print render($page['navigation']); ?>
+        <?php endif; ?>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+          <span class="icon-bar first" aria-hidden="true"></span>
+          <span class="icon-bar second" aria-hidden="true"></span>
+          <span class="icon-bar third" aria-hidden="true"></span>
         </button>
       <?php endif; ?>
     </div>
 
-    <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
+    <?php if (!empty($primary_nav) || !empty($secondary_nav)): ?>
       <div class="navbar-collapse collapse" id="navbar-collapse">
         <nav role="navigation">
           <?php if (!empty($primary_nav)): ?>
@@ -103,9 +110,6 @@
           <?php endif; ?>
           <?php if (!empty($secondary_nav)): ?>
             <?php print render($secondary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($page['navigation'])): ?>
-            <?php print render($page['navigation']); ?>
           <?php endif; ?>
         </nav>
       </div>
