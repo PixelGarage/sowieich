@@ -3,10 +3,23 @@
  * @file
  * Bootstrap 12 template for Display Suite.
  */
+//
+// shariff button definition
+libraries_load('shariff', 'naked');
+$shariff_attrs = array(
+  'data-services' => '["twitter","facebook","mail"]',
+  'data-orientation' => "horizontal",
+  'data-mail-url' => "mailto:",
+  'data-mail-subject' => variable_get('shariff_mail_subject', "SoWieIch Kindern in Not helfen..."),
+  'data-mail-body' => variable_get('shariff_mail_subject', "Die Kindernothilfe Schweiz ..."),
+  'data-lang' => "de",
+);
+
+//
+// logo and play button
 $logo_path = drupal_get_path('theme', 'pixelgarage') . '/images/';
 $logo_url = file_create_url($logo_path . 'knh_logo_rgb_neg.png');
 $play_button = file_create_url($logo_path . 'icon-play.svg');
-
 $color_class = 'bg-color-' . mt_rand(0, 6);
 
 $video_path = 'public://videos/';
@@ -25,6 +38,9 @@ $webm_source_url = file_create_url($video_path . 'ralph.webm');
     <?php if ($teaser): ?>
       <?php print $central; ?>
     <?php else: ?>
+      <div class="social-buttons">
+        <div class="shariff" <?php print drupal_attributes($shariff_attrs); ?>></div>
+      </div>
       <div class="inner-item">
         <!-- video frame -->
         <video id="user-video" preload="auto" loop="loop" poster="<?php print $poster_img; ?>">

@@ -111,10 +111,6 @@
           opacity: 1.0;
           #pxl-mixins.transition(opacity 0.6s ease);
 
-          &.hiding {
-            opacity: 0.0;
-          }
-
           .field-name-field-your-name {
             position: absolute;
             bottom: 5%;
@@ -159,6 +155,10 @@
             bottom: 6px;  // correction, don't know why???
             right: 0;
             width: 50%;
+
+            &.hiding {
+              opacity: 0.0;
+            }
 
             .field-name-field-your-name {
               bottom: 15%;

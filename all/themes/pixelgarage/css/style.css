@@ -9906,25 +9906,21 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 /*
  *  Shariff social-buttons component
  * --------------------------------------------------*/
-.shariff {
-  psoition: relative;
-}
-.shariff ul {
+body.front .shariff ul {
   display: inline-block;
   list-style: none;
   margin: 0;
   padding: 0;
   padding: 10px;
-  z-index: 1050;
 }
-.shariff ul li.shariff-button {
+body.front .shariff ul li {
+  display: inline-block;
   list-style: none;
   margin: 0;
   padding: 0;
   min-width: 40px;
 }
-.shariff ul li.shariff-button a {
-  position: relative;
+body.front .shariff ul li a {
   display: block;
   height: 40px;
   width: auto;
@@ -9933,21 +9929,24 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   border: none;
   background: none;
 }
-.shariff ul li.shariff-button a:hover,
-.shariff ul li.shariff-button a:focus {
+body.front .shariff ul li a:hover,
+body.front .shariff ul li a:focus {
   color: #c85094;
 }
-.shariff ul li.shariff-button a span.fa {
+body.front .shariff ul li a span.fa {
   display: inline-block;
   font-size: 30px;
   line-height: 30px;
   text-align: center;
   vertical-align: middle;
 }
-.shariff ul li.shariff-button a span.share_text {
+body.front .shariff ul li a span.share_text {
   display: none;
 }
-.shariff ul.orientation-vertical {
+body.front .shariff ul {
+  z-index: 1050;
+}
+body.front .shariff ul.orientation-vertical {
   position: fixed;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -9955,12 +9954,12 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   transform: translateY(-50%);
   right: -10px;
 }
-.shariff ul.orientation-vertical li.shariff-button {
+body.front .shariff ul.orientation-vertical li.shariff-button {
   display: block;
   width: auto;
   height: 60px;
 }
-.shariff ul.orientation-horizontal {
+body.front .shariff ul.orientation-horizontal {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -9968,8 +9967,55 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   transform: translateY(-50%);
   right: 0;
 }
-.shariff ul.orientation-horizontal li.shariff-button {
+body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child) {
+  width: 60px;
+  height: auto;
+}
+.node.node-post .social-buttons {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.node.node-post .social-buttons .shariff {
   display: inline-block;
+}
+.node.node-post .social-buttons .shariff ul {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+}
+.node.node-post .social-buttons .shariff ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 40px;
+}
+.node.node-post .social-buttons .shariff ul li a {
+  display: block;
+  height: 40px;
+  width: auto;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  background: none;
+}
+.node.node-post .social-buttons .shariff ul li a:hover,
+.node.node-post .social-buttons .shariff ul li a:focus {
+  color: #c85094;
+}
+.node.node-post .social-buttons .shariff ul li a span.fa {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+.node.node-post .social-buttons .shariff ul li a span.share_text {
+  display: none;
+}
+.node.node-post .social-buttons .shariff ul.orientation-horizontal li.shariff-button {
   width: 60px;
   height: auto;
 }
@@ -11787,10 +11833,6 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   -o-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
 }
-.node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side.hiding,
-.node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side.hiding {
-  opacity: 0.0;
-}
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-your-name,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-your-name {
   position: absolute;
@@ -11874,6 +11916,10 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
     bottom: 6px;
     right: 0;
     width: 50%;
+  }
+  .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side.hiding,
+  .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side.hiding {
+    opacity: 0.0;
   }
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-your-name,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-your-name {
