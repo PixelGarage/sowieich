@@ -23,7 +23,24 @@ function pixelgarage_preprocess_page(&$vars) {
   // hide titles on login forms
   pg_login_preprocess_page($vars);
 
-  //$vars['logo'] = str_replace(array('.jpg', '.png'), '.svg', $vars['logo']);
+  //
+  // define shariff buttons
+  if ($vars['is_front']) {
+    $shariff_attrs = array(
+      'data-services' => '["twitter","facebook","mail"]',
+      'data-orientation' => "horizontal",
+      'data-mail-url' => "mailto:",
+      'data-mail-subject' => variable_get('shariff_mail_subject', "SoWieIch Kindern in Not helfen..."),
+      'data-mail-body' => variable_get('shariff_mail_subject', "Die Kindernothilfe Schweiz ..."),
+      'data-lang' => "de",
+      'data-url' => "http://sowieich.ch",
+    );
+    $vars['shariff_attributes'] = drupal_attributes($shariff_attrs);
+
+    // load library
+    $variant = 'naked'; //variable_get('shariff_css', 'complete');
+    libraries_load('shariff', $variant);
+  }
 }
 
 

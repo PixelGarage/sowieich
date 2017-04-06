@@ -72,8 +72,6 @@
  *
  * @ingroup templates
  */
-$participate_text = t('Mitmachen');
-
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="<?php print $container_class; ?>">
@@ -184,6 +182,13 @@ $participate_text = t('Mitmachen');
   <footer class="footer">
     <div class="<?php print $container_class; ?>">
       <?php print render($page['footer']); ?>
+
+      <?php if ($is_front): ?>
+        <div class="shariff" <?php print $shariff_attributes; ?>></div>
+      <?php endif; ?>
     </div>
   </footer>
 <?php endif; ?>
+
+
+

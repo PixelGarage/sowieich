@@ -50,12 +50,10 @@
 
           &:before {
             content: '«';
-            #pxl-mixins.text();
             color: @pxl-color-violet;
           }
           &:after {
             content: '»';
-            #pxl-mixins.text();
             color: @pxl-color-violet;
           }
         }
@@ -89,43 +87,160 @@
 // full  mode
 .node.node-post.view-mode-full,
 .node.node-post.view-mode-default {
-  position: relative;
-  margin: 0;
-  padding-bottom: 125%;
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  background-color: white;
+  margin-bottom: 50px;
 
   div.row {
     div.col-sm-12 {
-      padding: 0;
+      .inner-item {
+        position: relative;
 
-      .field-name-field-image {
-        img {
+        video {
+          display: block;
           width: 100%;
           height: auto;
         }
-      }
 
-      .field-name-field-your-name {
-        position: absolute;
-        bottom: 5%;
-        right: -10px;
-        padding: 0;
+        .colored-side {
+          display: block;
+          position: relative;
+          overflow: hidden;
+          margin: 0;
+          width: 100%;
+          height: 0;
+          padding-bottom: 56.25%;
+          opacity: 1.0;
+          #pxl-mixins.transition(opacity 0.6s ease);
 
-        .field-item {
-          width: auto;
-          #pxl-mixins.text();
-          #pxl-mixins.font-size-responsive();
-          white-space: nowrap;
+          &.hiding {
+            opacity: 0.0;
+          }
+
+          .field-name-field-your-name {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            right: 0;
+            padding: 0 15px;
+
+            .field-item {
+              font-family: @pxl-text-font-bold;
+              #pxl-mixins.font-size-responsive(24px, 24px, 16px);
+              text-align: center;
+              color: #fff;
+              white-space: nowrap;
+            }
+          }
+
+          .field-name-field-quote {
+            position: absolute;
+            top: 45%;
+            left: 12.5%;
+            margin: 0 auto;
+            width: 75%;
+
+            .field-item {
+              font-family: @pxl-text-font-bold;
+              #pxl-mixins.font-size-responsive(24px, 24px, 16px);
+              text-align: center;
+              color: #fff;
+
+              &:before {
+                content: '«';
+              }
+              &:after {
+                content: '»';
+              }
+            }
+          }
+
+          @media @special-break {
+            position: absolute;
+            top: 0;
+            bottom: 6px;  // correction, don't know why???
+            right: 0;
+            width: 50%;
+
+            .field-name-field-your-name {
+              bottom: 15%;
+            }
+
+            .field-name-field-quote {
+              top: 10%;
+            }
+          }
+
+          &.bg-color-0 {
+            background-color: @pxl-color-0;
+          }
+          &.bg-color-1 {
+            background-color: @pxl-color-1;
+          }
+          &.bg-color-2 {
+            background-color: @pxl-color-2;
+          }
+          &.bg-color-3 {
+            background-color: @pxl-color-3;
+          }
+          &.bg-color-4 {
+            background-color: @pxl-color-4;
+          }
+          &.bg-color-5 {
+            background-color: @pxl-color-5;
+          }
+          &.bg-color-6 {
+            background-color: @pxl-color-6;
+          }
+
         }
-      }
 
-      .field-name-field-quote {
-        .field-item {
+        .play-button {
+          #pxl-mixins.center-xy(absolute);
+          opacity: 1.0;
+          #pxl-mixins.transition(opacity 0.6s ease);
 
+          &.hiding {
+            opacity: 0.0;
+          }
+
+          img {
+            width: 120px;
+
+            &.logo-normal {
+              display: none;
+            }
+
+            &.logo-hover {
+              display: block;
+            }
+
+            @media @special-break {
+              width: 200px;
+
+              &.logo-normal {
+                display: block;
+              }
+
+              &.logo-hover {
+                display: none;
+              }
+            }
+          }
         }
+
+        &:hover {
+          .play-button {
+            img {
+              &.logo-normal {
+                display: none;
+              }
+
+              &.logo-hover {
+                display: block;
+              }
+            }
+          }
+        }
+
       }
     }
   }

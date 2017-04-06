@@ -7,6 +7,60 @@
 (function ($) {
 
   /**
+   * Place the shariff buttons according to the screen width.
+   */
+  Drupal.behaviors.shariffButtonOrientation = {
+    attach: function(context) {
+      var $shariffButtons = $('body.front .shariff>ul');
+
+      // delete class of orientation
+      $shariffButtons.removeClass('orientation-vertical').removeClass('orientation-horizontal')
+
+      $(window).on('load resize', function() {
+        if ($(window).width() > 768) {
+          $shariffButtons.removeClass('orientation-horizontal').addClass('orientation-vertical');
+        }
+        else {
+          $shariffButtons.removeClass('orientation-vertical').addClass('orientation-horizontal');
+        }
+      });
+    }
+  };
+
+  /**
+   * Play the video on click
+   */
+  Drupal.behaviors.playVideo = {
+    attach: function(context) {
+      var video = document.getElementById('user-video'),
+        $videoContainer = $('.node-post.view-mode-full').find('.inner-item'),
+        $coloredSide = $videoContainer.find('.colored-side'),
+        $playButton = $videoContainer.find('.play-button');
+
+      // click on play / pause button
+      $videoContainer.once('click', function () {
+        $videoContainer.on('click', function () {
+          // toggle the play button
+          if (video.paused || video.ended) {
+            video.play();
+            $coloredSide.addClass('hiding');
+            $playButton.addClass('hiding');
+          }
+          else {
+            video.pause();
+            $coloredSide.removeClass('hiding');
+            $playButton.removeClass('hiding');
+          }
+          // don't propagate click event further up
+          return false;
+        });
+      });
+
+    }
+  };
+
+
+  /**
    * This behavior adds shadow to header on scroll.
    *
   Drupal.behaviors.addHeaderShadow = {
@@ -25,7 +79,6 @@
 
   /**
    * Anchor menus: Scrolls smoothly to anchor due to menu click.
-   */
   Drupal.behaviors.smoothScrolltoAnchors = {
     attach: function(context, settings) {
       $(function() {
@@ -48,6 +101,7 @@
       });
     }
   };
+   */
 
   /**
    * Allows full size clickable items.
