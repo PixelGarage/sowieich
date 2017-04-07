@@ -9971,54 +9971,6 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   width: 60px;
   height: auto;
 }
-.node.node-post .social-buttons {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.node.node-post .social-buttons .shariff {
-  display: inline-block;
-}
-.node.node-post .social-buttons .shariff ul {
-  display: inline-block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding: 10px;
-}
-.node.node-post .social-buttons .shariff ul li {
-  display: inline-block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  min-width: 40px;
-}
-.node.node-post .social-buttons .shariff ul li a {
-  display: block;
-  height: 40px;
-  width: auto;
-  text-decoration: none;
-  color: #fff;
-  border: none;
-  background: none;
-}
-.node.node-post .social-buttons .shariff ul li a:hover,
-.node.node-post .social-buttons .shariff ul li a:focus {
-  color: #c85094;
-}
-.node.node-post .social-buttons .shariff ul li a span.fa {
-  display: inline-block;
-  font-size: 30px;
-  line-height: 30px;
-  text-align: center;
-  vertical-align: middle;
-}
-.node.node-post .social-buttons .shariff ul li a span.share_text {
-  display: none;
-}
-.node.node-post .social-buttons .shariff ul.orientation-horizontal li.shariff-button {
-  width: 60px;
-  height: auto;
-}
 /*
  *  Language block component
  * --------------------------------------------------*/
@@ -11256,8 +11208,14 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 /*
  *  Node testimonial component
  * --------------------------------------------------*/
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-title h2,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-title h2 {
+.node.node-testimonial.view-mode-teaser {
+  overflow: visible;
+  margin: 0;
+  padding-bottom: 125%;
+  width: 100%;
+  height: 0;
+}
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-title h2 {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
   letter-spacing: 0.02em;
@@ -11266,35 +11224,27 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 29.79310344827586em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-title h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-title h2 {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-title h2 {
     font-size: 7.55208333vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-title h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-title h2 {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-title h2 {
     font-size: 58px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-title h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-title h2 {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-title h2 {
     font-size: 58px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-  margin: 0 0 80px;
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body {
+  padding: 20px;
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h1,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h1,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h2,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h2,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h3,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h3,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h1,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h2,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h3,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title {
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
@@ -11304,43 +11254,30 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 29.79310344827586em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h1,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h2,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h3,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title {
     font-size: 7.55208333vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h1,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h2,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h3,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title {
     font-size: 58px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h1,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h2,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h3,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h1,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h2,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h3,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title {
     font-size: 58px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title-light,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title-light {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title-light {
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
@@ -11350,31 +11287,24 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #fff;
 }
 @media screen and (min-width: 29.79310344827586em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title-light,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title-light {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title-light {
     font-size: 7.55208333vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title-light,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title-light {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title-light {
     font-size: 58px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-title-light,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-title-light {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-title-light {
     font-size: 58px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h4,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h4,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h5,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h5,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h6,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h6,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-subtitle,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h4,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
   font-size: 18px;
@@ -11384,43 +11314,30 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 36em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-subtitle,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h4,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
     font-size: 3.125vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-subtitle,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h4,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
     font-size: 24px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h4,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h5,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body h6,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-subtitle,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h4,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
     font-size: 24px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body p {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
   margin: 0 0 10px;
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
@@ -11430,25 +11347,21 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body p {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body p {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body p {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-quote,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-quote {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
   letter-spacing: 0.02em;
@@ -11457,25 +11370,21 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   text-align: center;
 }
 @media screen and (min-width: 29.79310344827586em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-quote,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-quote {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-quote {
     font-size: 7.55208333vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-quote,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-quote {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-quote {
     font-size: 58px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-quote,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-quote {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-quote {
     font-size: 58px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a {
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
   letter-spacing: normal;
@@ -11484,39 +11393,30 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a:hover,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a:hover,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body a:focus,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body a:focus {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a:hover,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item a:focus {
   color: #c4c700;
   text-decoration: none;
   background: none;
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body pre,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body pre,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body address,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body address,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body i,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body i,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body em,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body em {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item pre,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item address,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item i,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item em {
   font-size: 15px;
   letter-spacing: normal;
   line-height: 1.15em;
@@ -11525,45 +11425,31 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   font-family: 'BentonSansRegular', Arial, sans-serif;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body em,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body em {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item pre,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item address,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item i,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item em {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body em,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body em {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item pre,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item address,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item i,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item em {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body pre,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body address,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body i,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body em,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body em {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item pre,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item address,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item i,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item em {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body strong,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body strong,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body b,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body b {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item strong,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item b {
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
   letter-spacing: normal;
@@ -11573,31 +11459,24 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   font-family: 'BentonSansBold', Arial, sans-serif;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body b,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body b {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item strong,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item b {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body b,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body b {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item strong,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item b {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body strong,
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body b,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body b {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item strong,
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item b {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u {
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
   letter-spacing: normal;
@@ -11606,31 +11485,25 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   color: #000;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u:hover,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u:hover,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body u:focus,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body u:focus {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u:hover,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item u:focus {
   color: #000000;
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body mark,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body mark {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item mark {
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
   letter-spacing: normal;
@@ -11640,31 +11513,26 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   background-color: #ff0;
 }
 @media screen and (min-width: 40em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body mark,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body mark {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item mark {
     font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body mark,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body mark {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item mark {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body mark,
-  .node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body mark {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item mark {
     font-size: 18px;
   }
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body hr,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body hr {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item hr {
   border: 0;
   border-bottom: 2px solid #000;
   background: none;
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body img,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body img {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item img {
   display: block;
   overflow: hidden;
   margin: 20px auto;
@@ -11672,14 +11540,10 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   max-width: 100%;
   height: auto;
 }
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body embed,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body embed,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body video,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body video,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body audio,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body audio,
-.node.node-testimonial.view-mode-full > .row > div.col-sm-12 > .field-name-body iframe,
-.node.node-testimonial.view-mode-default > .row > div.col-sm-12 > .field-name-body iframe {
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item embed,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item video,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item audio,
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item iframe {
   display: block;
   overflow: hidden;
   margin: 20px auto;
@@ -11689,16 +11553,85 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   height: auto;
   min-height: 350px;
 }
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
+  font-family: 'BentonSansRegular';
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  line-height: 1.2em;
+  text-align: left;
+  color: #000;
+}
+@media screen and (min-width: 36em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
+    font-size: 3.125vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
+    font-size: 24px;
+  }
+}
+.node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
+  content: '#sowieich';
+  font-family: 'BentonSansRegular';
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  line-height: 1.2em;
+  text-align: left;
+  color: #000;
+  color: #fff;
+}
+@media screen and (min-width: 36em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
+    font-size: 3.125vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
+    font-size: 24px;
+  }
+}
+.testimonial-bg-color-0 .node.node-testimonial.view-mode-teaser {
+  background-color: #afd4e6;
+}
+.testimonial-bg-color-1 .node.node-testimonial.view-mode-teaser {
+  background-color: #d57c24;
+}
+.testimonial-bg-color-2 .node.node-testimonial.view-mode-teaser {
+  background-color: #d7ae00;
+}
+.testimonial-bg-color-3 .node.node-testimonial.view-mode-teaser {
+  background-color: #929600;
+}
+.testimonial-bg-color-4 .node.node-testimonial.view-mode-teaser {
+  background-color: #c4c700;
+}
+.testimonial-bg-color-5 .node.node-testimonial.view-mode-teaser {
+  background-color: #a27646;
+}
+.testimonial-bg-color-6 .node.node-testimonial.view-mode-teaser {
+  background-color: #c4b597;
+}
 /*
  *  Node post component
  * --------------------------------------------------*/
 .node.node-post.view-mode-teaser {
   position: relative;
+  overflow: visible;
   margin: 0;
   padding-bottom: 125%;
   width: 100%;
   height: 0;
-  overflow: visible;
   background-color: white;
 }
 .node.node-post.view-mode-teaser div.row {
@@ -11808,9 +11741,70 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-post.view-mode-default {
   margin-bottom: 50px;
 }
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff {
+  display: inline-block;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 40px;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a {
+  display: block;
+  height: 40px;
+  width: auto;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  background: none;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a:hover,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a:hover,
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a:focus,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a:focus {
+  color: #c85094;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a span.fa,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a span.fa {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a span.share_text,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a span.share_text {
+  display: none;
+}
+.node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul.orientation-horizontal li.shariff-button,
+.node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul.orientation-horizontal li.shariff-button {
+  width: 60px;
+  height: auto;
+}
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item {
   position: relative;
+  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item video,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item video {
@@ -11870,10 +11864,10 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote {
   position: absolute;
-  top: 45%;
-  left: 12.5%;
+  top: 25%;
+  left: 10%;
   margin: 0 auto;
-  width: 75%;
+  width: 80%;
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item {
@@ -11881,6 +11875,12 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   font-size: 16px;
   text-align: center;
   color: #fff;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
 }
 @media screen and (min-width: 32em) {
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item,
@@ -11897,7 +11897,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 @media screen and (min-width: 64em) {
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item {
-    font-size: 24px;
+    font-size: 30px;
   }
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item:before,
@@ -11928,6 +11928,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote {
     top: 10%;
+    left: 15%;
+    width: 75%;
   }
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side.bg-color-0,
@@ -11991,7 +11993,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 @media screen and (min-width: 640px) {
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .play-button img,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .play-button img {
-    width: 200px;
+    width: 160px;
   }
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .play-button img.logo-normal,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .play-button img.logo-normal {
@@ -12000,6 +12002,12 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .play-button img.logo-hover,
   .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .play-button img.logo-hover {
     display: none;
+  }
+}
+@media screen and (min-width: 64em) {
+  .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .play-button img,
+  .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .play-button img {
+    width: 200px;
   }
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item:hover .play-button img.logo-normal,
@@ -14738,6 +14746,7 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .view.view-proximity ul.pagination li:hover span,
 .view.view-proximity ul.pagination li:focus span,
 .view.view-proximity ul.pagination li.active span {
+  font-family: 'BentonSansBold', Arial, sans-serif;
   color: #000;
   text-decoration: none;
 }
@@ -15011,6 +15020,7 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .view.view-postings ul.pagination li:hover span,
 .view.view-postings ul.pagination li:focus span,
 .view.view-postings ul.pagination li.active span {
+  font-family: 'BentonSansBold', Arial, sans-serif;
   color: #000;
   text-decoration: none;
 }
@@ -15803,56 +15813,333 @@ form.webform-client-form div.form-actions a.done-link:hover {
  *  Webform confirmation component
  * --------------------------------------------------*/
 .webform-confirmation {
-  margin: 50px auto;
-  padding: 15px 30px;
-  width: 80%;
-  color: #fff;
-  border: 1px solid #000;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #000;
-}
-.webform-confirmation .confirmation-title {
-  font-family: 'BentonSansBold', Arial, sans-serif;
-  font-size: 15px;
-  line-height: 30px;
+  padding: 30px 20px;
+  background: #fff url(../images/bg_highlighted.png) repeat top left / 25%;
+  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
   text-align: center;
+}
+.webform-confirmation h1,
+.webform-confirmation h2,
+.webform-confirmation h3,
+.webform-confirmation .pxl-title {
+  margin: 10px auto 20px;
+  font-family: 'BentonSansBold', Arial, sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.02em;
+  line-height: 1.4em;
+  text-align: center;
+  color: #000;
+}
+@media screen and (min-width: 29.79310344827586em) {
+  .webform-confirmation h1,
+  .webform-confirmation h2,
+  .webform-confirmation h3,
+  .webform-confirmation .pxl-title {
+    font-size: 7.55208333vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation h1,
+  .webform-confirmation h2,
+  .webform-confirmation h3,
+  .webform-confirmation .pxl-title {
+    font-size: 58px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation h1,
+  .webform-confirmation h2,
+  .webform-confirmation h3,
+  .webform-confirmation .pxl-title {
+    font-size: 58px;
+  }
+}
+.webform-confirmation .pxl-title-light {
+  margin: 10px auto 20px;
+  font-family: 'BentonSansLight', Arial, sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.02em;
+  line-height: 1.4em;
+  text-align: center;
+  color: #fff;
+}
+@media screen and (min-width: 29.79310344827586em) {
+  .webform-confirmation .pxl-title-light {
+    font-size: 7.55208333vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation .pxl-title-light {
+    font-size: 58px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation .pxl-title-light {
+    font-size: 58px;
+  }
+}
+.webform-confirmation h4,
+.webform-confirmation h5,
+.webform-confirmation h6,
+.webform-confirmation .pxl-subtitle {
+  margin: 10px auto;
+  font-family: 'BentonSansRegular';
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  line-height: 1.2em;
+  text-align: left;
+  color: #000;
 }
 @media screen and (min-width: 36em) {
-  .webform-confirmation .confirmation-title {
-    font-size: 2.60416667vw;
+  .webform-confirmation h4,
+  .webform-confirmation h5,
+  .webform-confirmation h6,
+  .webform-confirmation .pxl-subtitle {
+    font-size: 3.125vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .webform-confirmation .confirmation-title {
-    font-size: 20px;
+  .webform-confirmation h4,
+  .webform-confirmation h5,
+  .webform-confirmation h6,
+  .webform-confirmation .pxl-subtitle {
+    font-size: 24px;
   }
 }
 @media screen and (min-width: 64em) {
-  .webform-confirmation .confirmation-title {
-    font-size: 25px;
+  .webform-confirmation h4,
+  .webform-confirmation h5,
+  .webform-confirmation h6,
+  .webform-confirmation .pxl-subtitle {
+    font-size: 24px;
   }
 }
-.webform-confirmation .confirmation-message {
+.webform-confirmation p {
+  margin: 0 0 10px;
   font-family: 'BentonSansRegular', Arial, sans-serif;
   font-size: 15px;
-  line-height: 20px;
-  text-align: center;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
 }
-@media screen and (min-width: 51.42857142857143em) {
-  .webform-confirmation .confirmation-message {
-    font-size: 1.82291667vw;
+@media screen and (min-width: 40em) {
+  .webform-confirmation p {
+    font-size: 2.34375vw;
   }
 }
 @media screen and (min-width: 48em) {
-  .webform-confirmation .confirmation-message {
-    font-size: 14px;
+  .webform-confirmation p {
+    font-size: 18px;
   }
 }
 @media screen and (min-width: 64em) {
-  .webform-confirmation .confirmation-message {
+  .webform-confirmation p {
     font-size: 18px;
+  }
+}
+.webform-confirmation .pxl-quote {
+  font-family: 'BentonSansBold', Arial, sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.02em;
+  line-height: 1.4em;
+  color: #000;
+  text-align: center;
+}
+@media screen and (min-width: 29.79310344827586em) {
+  .webform-confirmation .pxl-quote {
+    font-size: 7.55208333vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation .pxl-quote {
+    font-size: 58px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation .pxl-quote {
+    font-size: 58px;
+  }
+}
+.webform-confirmation a {
+  font-family: 'BentonSansRegular', Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
+}
+@media screen and (min-width: 40em) {
+  .webform-confirmation a {
+    font-size: 2.34375vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation a {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation a {
+    font-size: 18px;
+  }
+}
+.webform-confirmation a:hover,
+.webform-confirmation a:focus {
+  color: #c4c700;
+  text-decoration: none;
+  background: none;
+}
+.webform-confirmation pre,
+.webform-confirmation address,
+.webform-confirmation i,
+.webform-confirmation em {
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
+  font-family: 'BentonSansRegular', Arial, sans-serif;
+}
+@media screen and (min-width: 40em) {
+  .webform-confirmation pre,
+  .webform-confirmation address,
+  .webform-confirmation i,
+  .webform-confirmation em {
+    font-size: 2.34375vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation pre,
+  .webform-confirmation address,
+  .webform-confirmation i,
+  .webform-confirmation em {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation pre,
+  .webform-confirmation address,
+  .webform-confirmation i,
+  .webform-confirmation em {
+    font-size: 18px;
+  }
+}
+.webform-confirmation strong,
+.webform-confirmation b {
+  font-family: 'BentonSansRegular', Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
+  font-family: 'BentonSansBold', Arial, sans-serif;
+}
+@media screen and (min-width: 40em) {
+  .webform-confirmation strong,
+  .webform-confirmation b {
+    font-size: 2.34375vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation strong,
+  .webform-confirmation b {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation strong,
+  .webform-confirmation b {
+    font-size: 18px;
+  }
+}
+.webform-confirmation u {
+  font-family: 'BentonSansRegular', Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
+}
+@media screen and (min-width: 40em) {
+  .webform-confirmation u {
+    font-size: 2.34375vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation u {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation u {
+    font-size: 18px;
+  }
+}
+.webform-confirmation u:hover,
+.webform-confirmation u:focus {
+  color: #000000;
+}
+.webform-confirmation mark {
+  font-family: 'BentonSansRegular', Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.15em;
+  text-align: left;
+  color: #000;
+  background-color: #ff0;
+}
+@media screen and (min-width: 40em) {
+  .webform-confirmation mark {
+    font-size: 2.34375vw;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation mark {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 64em) {
+  .webform-confirmation mark {
+    font-size: 18px;
+  }
+}
+.webform-confirmation hr {
+  border: 0;
+  border-bottom: 2px solid #000;
+  background: none;
+}
+.webform-confirmation img {
+  display: block;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+}
+.webform-confirmation embed,
+.webform-confirmation video,
+.webform-confirmation audio,
+.webform-confirmation iframe {
+  display: block;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 15px;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 350px;
+}
+@media screen and (min-width: 30em) {
+  .webform-confirmation {
+    padding: 30px 50px;
+  }
+}
+@media screen and (min-width: 48em) {
+  .webform-confirmation {
+    padding: 30px 80px;
   }
 }
 .links {
@@ -15862,13 +16149,15 @@ form.webform-client-form div.form-actions a.done-link:hover {
 @media screen and (min-width: 48em) {
   .links {
     text-align: left;
-    margin-left: 80px;
   }
 }
-@media screen and (min-width: 64em) {
-  .links {
-    margin-left: 100px;
-  }
+.links a {
+  color: #000;
+  text-decoration: none;
+}
+.links a:hover {
+  color: #c85094;
+  text-decoration: none;
 }
 /*
  *  Webform submission component
@@ -16228,6 +16517,7 @@ body .main-container .container-fluid #page-header .region-header h2.block-title
 }
 body .main-container .container .row section h1.page-header,
 body .main-container .container-fluid .row section h1.page-header {
+  display: none;
   margin: 20px 0 10px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;

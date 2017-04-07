@@ -13,8 +13,13 @@
 
 // General settings
 // -------------------------
-.node.node-testimonial.view-mode-full,
-.node.node-testimonial.view-mode-default {
+.node.node-testimonial.view-mode-teaser {
+  overflow: visible;
+  margin: 0;
+  padding-bottom: 125%;
+  width: 100%;
+  height: 0;
+
   >.row {
     >div.col-sm-12 {
 
@@ -25,10 +30,46 @@
       }
 
       >.field-name-body {
-        margin: 0 0 80px;
-        #pxl-mixins.wysiwyg-body();
+        padding: 20px;
+
+        .field-item {
+          #pxl-mixins.wysiwyg-body();
+
+          p {
+            #pxl-mixins.subtitle();
+          }
+
+          &:after {
+            content: '#sowieich';
+            #pxl-mixins.subtitle();
+            color: #fff;
+          }
+        }
       }
 
     }
   }
+
+  .testimonial-bg-color-0 & {
+    background-color: @pxl-color-0;
+  }
+  .testimonial-bg-color-1 & {
+    background-color: @pxl-color-1;
+  }
+  .testimonial-bg-color-2 & {
+    background-color: @pxl-color-2;
+  }
+  .testimonial-bg-color-3 & {
+    background-color: @pxl-color-3;
+  }
+  .testimonial-bg-color-4 & {
+    background-color: @pxl-color-4;
+  }
+  .testimonial-bg-color-5 & {
+    background-color: @pxl-color-5;
+  }
+  .testimonial-bg-color-6 & {
+    background-color: @pxl-color-6;
+  }
+
 }

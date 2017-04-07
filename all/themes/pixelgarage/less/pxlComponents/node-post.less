@@ -16,11 +16,11 @@
 // Teaser Post
 .node.node-post.view-mode-teaser {
   position: relative;
+  overflow: visible;
   margin: 0;
   padding-bottom: 125%;
   width: 100%;
   height: 0;
-  overflow: visible;
   background-color: white;
 
   div.row {
@@ -91,8 +91,26 @@
 
   div.row {
     div.col-sm-12 {
+      .social-buttons {
+        margin-bottom: 20px;
+        text-align: center;
+
+        .shariff {
+          display: inline-block;
+          .shariff();
+
+          ul.orientation-horizontal {
+            li.shariff-button {
+              width: 60px;
+              height: auto;
+            }
+          }
+        }
+      }
+
       .inner-item {
         position: relative;
+        #pxl-mixins.box-shadow(@pxl-box-shadow);
 
         video {
           display: block;
@@ -129,16 +147,17 @@
 
           .field-name-field-quote {
             position: absolute;
-            top: 45%;
-            left: 12.5%;
+            top: 25%;
+            left: 10%;
             margin: 0 auto;
-            width: 75%;
+            width: 80%;
 
             .field-item {
               font-family: @pxl-text-font-bold;
-              #pxl-mixins.font-size-responsive(24px, 24px, 16px);
+              #pxl-mixins.font-size-responsive(30px, 24px, 16px);
               text-align: center;
               color: #fff;
+              #pxl-mixins.hyphenate(auto);
 
               &:before {
                 content: '«';
@@ -166,6 +185,8 @@
 
             .field-name-field-quote {
               top: 10%;
+              left: 15%;
+              width: 75%;
             }
           }
 
@@ -214,7 +235,7 @@
             }
 
             @media @special-break {
-              width: 200px;
+              width: 160px;
 
               &.logo-normal {
                 display: block;
@@ -223,6 +244,9 @@
               &.logo-hover {
                 display: none;
               }
+            }
+            @media @normal {
+              width: 200px;
             }
           }
         }
