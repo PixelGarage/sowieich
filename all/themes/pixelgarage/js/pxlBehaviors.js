@@ -7,6 +7,20 @@
 (function ($) {
 
   /**
+   * Set a class defining the device, e.g. mobile-device or desktop.
+   */
+  Drupal.behaviors.setMobileClass = {
+    attach: function (context) {
+      if (isMobile.any) {
+        $('body').addClass('mobile-device');
+      }
+      else {
+        $('body').addClass('desktop');
+      }
+    }
+  };
+
+  /**
    * Place the shariff buttons according to the screen width.
    */
   Drupal.behaviors.shariffButtonOrientation = {

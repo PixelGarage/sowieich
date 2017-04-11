@@ -14,7 +14,7 @@
       $.each(Drupal.settings.proximity, function (container, settings) {
 
         var $container = $('#' + container),
-            $items     = $container.find('.pe-item-no-ajax'),
+            $items     = $container.find('.pe-item-ajax'),
             $linkedItems = $container.find('.pe-item-linked');
 
         $items.once('click', function () {

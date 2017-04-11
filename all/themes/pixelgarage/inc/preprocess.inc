@@ -24,6 +24,10 @@ function pixelgarage_preprocess_page(&$vars) {
   pg_login_preprocess_page($vars);
 
   //
+  // replace logo with svg version
+  $vars['logo'] = str_replace(array('.jpg', '.png'), '.svg', $vars['logo']);
+
+  //
   // define shariff buttons
   if ($vars['is_front']) {
     $shariff_attrs = array(

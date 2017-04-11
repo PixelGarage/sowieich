@@ -8,6 +8,15 @@
 
 // Mixins
 // -------------------------
+.align-xy(@position: relative; @top: 50%; @left:50%) {
+  position: @position;
+  top: @top;
+  left: @left;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 
 
 // General settings
@@ -76,6 +85,28 @@
           #pxl-mixins.font-size-responsive();
           color: @pxl-color-white;
           white-space: nowrap;
+        }
+      }
+
+      .play-button {
+        .align-xy(absolute, 40%);
+
+        img.logo-hover {
+          display: block;
+          width: 60px;
+
+          body.desktop & {
+            opacity: 0.0;
+            #pxl-mixins.transition(opacity 0.6s ease);
+          }
+        }
+      }
+
+      body.desktop &:hover {
+        .play-button {
+          img.logo-hover {
+            opacity: 1.0;
+          }
         }
       }
     }
@@ -237,12 +268,14 @@
             @media @special-break {
               width: 160px;
 
-              &.logo-normal {
-                display: block;
-              }
+              body.desktop & {
+                &.logo-normal {
+                  display: block;
+                }
 
-              &.logo-hover {
-                display: none;
+                &.logo-hover {
+                  display: none;
+                }
               }
             }
             @media @normal {
@@ -251,7 +284,7 @@
           }
         }
 
-        &:hover {
+        body.desktop &:hover {
           .play-button {
             img {
               &.logo-normal {

@@ -61,3 +61,39 @@ function pixelgarage_proximity_render_item_alter($container_index, $param, &$ren
 }
 
 
+/* =============================================================================
+ *    Webform alter hooks implementation
+ * ========================================================================== */
+/**
+ * Fill the submission values into a node.
+ */
+function pixelgarage_webform_submission_presave_alter($node, &$submission) {
+  //
+  // create post node and save nid in the submission
+  $post = new stdClass();
+  $post->type = 'post';
+  $post->language = LANGUAGE_NONE;
+  $post->uid = 1;
+  $post->status = 0;  // do not publish, before videos are attached
+  $post->comment = 0;
+  $post->promote = 0;
+  node_object_prepare($post);
+  //
+  // update submission data on the post and save it
+  $post->title = t('@you post', array('@you' => $submission->data[4][0])); // create node title
+  $post->field_e_mail[LANGUAGE_NONE][0]['email'] = $submission->data[1][0]; // email
+  $post->field_your_name[LANGUAGE_NONE][0]['value'] = $submission->data[4][0]; // your name
+  $post->field_quote[LANGUAGE_NONE][0]['value'] = substr($submission->data[3][0], 0, 100); // Quote
+  $post->field_video[LANGUAGE_NONE][0]['fid'] = $submission->data[2][0]; // fid video
+  $post->field_video[LANGUAGE_NONE][0]['display'] = 1;  // used to save node successfully
+  $post = node_submit($post);
+  node_save($post);
+
+  //
+  // add related post id to submission
+  _set_webform_submission_value($node, $submission, 'post_nid', $post->nid);
+
+  //
+  // start video conversion with transloadit (the resulting videos are sent by webhook)
+
+}

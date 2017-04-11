@@ -35,26 +35,33 @@ $webm_source_url = file_create_url($video_path . 'ralph.webm');
   <?php endif; ?>
   <div class="row">
     <<?php print $central_wrapper; ?> class="col-sm-12 <?php print $central_classes; ?>">
-    <div class="social-buttons">
-      <div class="shariff" <?php print drupal_attributes($shariff_attrs); ?>></div>
-    </div>
-    <div class="inner-item">
-      <!-- video frame -->
-      <video id="user-video" preload="auto" loop="loop" poster="<?php print $poster_img; ?>">
-        <source src="<?php print $mp4_source_url; ?>" type="video/mp4">
-        <source src="<?php print $webm_source_url; ?>" type="video/webm">
-        Your browser doesn't support HTML5 video tag.
-      </video>
-      <!-- video cover -->
-      <div class="colored-side <?php print $color_class; ?>">
-        <?php print render($content['field_your_name']); ?>
-        <?php print render($content['field_quote']); ?>
-      </div>
+    <?php if ($teaser): ?>
+      <?php print $central; ?>
       <div class="play-button">
-        <img class="logo-normal" src="<?php print $logo_url ?>"/>
         <img class="logo-hover" src="<?php print $play_button ?>"/>
       </div>
-    </div>
+    <?php else: ?>
+      <div class="social-buttons">
+        <div class="shariff" <?php print drupal_attributes($shariff_attrs); ?>></div>
+      </div>
+      <div class="inner-item">
+        <!-- video frame -->
+        <video id="user-video" preload="auto" loop="loop" poster="<?php print $poster_img; ?>">
+          <source src="<?php print $mp4_source_url; ?>" type="video/mp4">
+          <source src="<?php print $webm_source_url; ?>" type="video/webm">
+          Your browser doesn't support HTML5 video tag.
+        </video>
+        <!-- video cover -->
+        <div class="colored-side <?php print $color_class; ?>">
+          <?php print render($content['field_your_name']); ?>
+          <?php print render($content['field_quote']); ?>
+        </div>
+        <div class="play-button">
+          <img class="logo-normal" src="<?php print $logo_url ?>"/>
+          <img class="logo-hover" src="<?php print $play_button ?>"/>
+        </div>
+      </div>
+    <?php endif; ?>
     </<?php print $central_wrapper; ?>>
   </div>
 </<?php print $layout_wrapper ?>>
