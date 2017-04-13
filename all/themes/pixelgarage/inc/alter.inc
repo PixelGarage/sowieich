@@ -62,7 +62,7 @@ function pixelgarage_proximity_render_item_alter($container_index, $param, &$ren
 
 
 /* =============================================================================
- *    Webform alter hooks implementation
+ *    Post content hooks implementation
  * ========================================================================== */
 /**
  * Fill the submission values into a node.
@@ -94,6 +94,36 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   _set_webform_submission_value($node, $submission, 'post_nid', $post->nid);
 
   //
-  // start video conversion with transloadit (the resulting videos are sent by webhook)
+  // start video conversion with transloadit.
+  // The converted videos are sent by assembly notification (webhook)
+  $state = array('nid' => $post->nid);
+  $video = file_load($submission->data[2][0]);
+  $video_path = file_create_url($video->uri);
+  $files = array($video_path);
+  $template_id = '';
+  if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, $template_id, null, $state)) {
+    drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings.'), 'error', false);
+  }
 
+}
+
+/**
+ * Called during assembly notification.
+ *
+ * @param $state array
+ *  The state variables to be altered during the asynchronous assembly notification.
+ * @param $results
+ *  An associative array containing the resulting files of a transloadit assembly.
+ * @param $response
+ *  The complete response of a transloadit assembly.
+ *
+ * @see transloadit_api_execute_assembly()
+ */
+function pixelgarage_transloadit_api_state_alter(&$state, $results, $response) {
+  $node  = node_load($state['nid']);
+  $node->status = 1;
+  $node->field_video_mp4[LANGUAGE_NONE][0]['url'] = $results['url_mp4'];
+  $node->field_video_webm[LANGUAGE_NONE][0]['url'] = $results['url_webm'];
+
+  node_save($node);
 }
