@@ -26,13 +26,14 @@ The module provides a simple abstraction of the Transloadit RESTful service usin
 1. The module provides a configuration form at admin/config/services/transloadit_api. Here the key and the secret of
    the user account has to be added and the connection to the Transloadit service can be tested.
 
-2. The module provides two functions:
+2. The module provides two Transloadit API call methods (see transloadit_api.methods.inc):
   a) transloadit_api_get_instance(), returning an instance of \transloadit\Transloadit with the key and secret set.
-  b) transloadit_api_execute_assembly($files, $template_id, $steps = array(), $async = true) to upload files and
-     process it with the given assembly steps. Signature Authentication is automatically added.
+  b) transloadit_api_execute_assembly($files, $template_id, $steps = array(), $context = array(), $async = true)
+     to upload files and process it with the defined template (transloadit user account) or the given assembly steps.
+     Signature Authentication is automatically added.
 
-3. The module provides two hooks returning the transloadit response of an asynchronous request (see transloadit_api.api.php
-   for further details)
+3. The module provides two hooks returning the transloadit response of an asynchronous conversion request .
+    (see transloadit_api.api.php for further details)
 
 
 -----------------------------------------------------------------------------
@@ -51,5 +52,5 @@ Thats it! It will connect to the tunnel server, setup the tunnel, and tell you w
 
 1. Copy this url to the Localtunnel URL field in the admin config form (admin/config/services/transloadit_api)
 2. All asynchronous calls will automatically use the tunnel for the assembly notification.
-3. Close the terminal session to close the tunnel after testing (or use Ctrl+c).
+3. Close the terminal session to close the tunnel after testing (or use Ctrl+c in Terminal).
 

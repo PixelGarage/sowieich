@@ -8,6 +8,7 @@
 
 /**
  * Alters the menu entries.
+ *
  * @param $items
  */
 function pixelgarage_menu_alter(&$items) {
@@ -22,15 +23,19 @@ function pixelgarage_menu_alter(&$items) {
 /**
  * Alters the proximity item load parameter array.
  *
- * The load parameter array defines a specific url parameter for each proximity item.
- * This parameter is added at the end of the request url and must be unique and URL conform.
- * The unique parameter defines, which item content has to be loaded from
- * the server (see next api function).
+ * The load parameter array defines a specific url parameter for each proximity
+ * item. This parameter is added at the end of the request url and must be
+ * unique and URL conform. The unique parameter defines, which item content has
+ * to be loaded from the server (see next api function).
  *
- * @param $container_index      int     Index of proximity container (if more than one container exists in one page).
- * @param $view                 array   The view.
- * @param $ajax_load_params     array   Array of ajax load parameters to be altered, one for each proximity item (row)
- *                                      retrieved by the view. Default is the views row index.
+ * @param int   $container_index
+ *  Index of proximity container (if more than one container exists in one
+ *  page).
+ * @param array $view
+ *  The view.
+ * @param array $ajax_load_params
+ *  Array of ajax load parameters to be altered, one for each proximity item
+ *  (row) retrieved by the view. Default is the views row index.
  */
 function pixelgarage_proximity_load_params_alter($container_index, $view, &$ajax_load_params) {
   // Return the node id as ajax parameter for each item.
@@ -41,16 +46,23 @@ function pixelgarage_proximity_load_params_alter($container_index, $view, &$ajax
 
 /**
  * Implements the item specific content as render array or html string.
- * The input parameter $param contains the unique load parameter of the requested item.
+ * The input parameter $param contains the unique load parameter of the
+ * requested item.
  *
- * @param $container_index      int     Index of proximity container (if more than one container exists in one page).
- * @param $param                string  The item specific load parameter (see also hook_proximity_ajax_load_params_alter).
- * @param $render_item          mixed   The rendered content to be returned to the client. The $render_item should be
- *                                      replaced either by a string (rendered html content), a render array or an integer (error code).
+ * @param int    $container_index
+ *    Index of proximity container (if more than one container exists in one
+ *    page).
+ * @param string $param
+ *    The item specific load parameter (see also
+ *    hook_proximity_ajax_load_params_alter).
+ * @param mixed  $render_item
+ *    The rendered content to be returned to the client. The $render_item
+ *    should be replaced either by a string (rendered html content), a render
+ *    array or an integer (error code).
  */
 function pixelgarage_proximity_render_item_alter($container_index, $param, &$render_item) {
   // return the render array for the specific node, if available
-  if ($node= node_load($param)) {
+  if ($node = node_load($param)) {
     $view_mode = 'full';
     if (property_exists($node, 'ds_switch') && !empty($node->ds_switch)) {
       // take an alternate view mode set by the ds switch
@@ -95,32 +107,34 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
 
   //
   // start video conversion with transloadit.
-  // The converted videos are sent by assembly notification (webhook)
-  $state = array('nid' => $post->nid);
+  // The converted videos are downloaded and made accessible by the assembly notification (webhook)
+  $context = array('nid' => $post->nid);
   $video = file_load($submission->data[2][0]);
   $video_path = file_create_url($video->uri);
   $files = array($video_path);
   $template_id = '';
-  if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, $template_id, null, $state)) {
-    drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings.'), 'error', false);
+  if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, $template_id, NULL, $context)) {
+    drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings.'), 'error', FALSE);
   }
 
 }
 
 /**
- * Called during assembly notification.
+ * Called during assembly notification callback.
  *
- * @param $state array
- *  The state variables to be altered during the asynchronous assembly notification.
- * @param $results
- *  An associative array containing the resulting files of a transloadit assembly.
- * @param $response
- *  The complete response of a transloadit assembly.
+ * @param array $context
+ *    The state variables to be altered during the asynchronous assembly
+ *    notification.
+ * @param array $results
+ *    An associative array containing the resulting files of a transloadit
+ *    assembly.
+ * @param array $data
+ *    The complete data array of a transloadit assembly response.
  *
  * @see transloadit_api_execute_assembly()
  */
-function pixelgarage_transloadit_api_state_alter(&$state, $results, $response) {
-  $node  = node_load($state['nid']);
+function pixelgarage_transloadit_api_context_alter(&$context, $results, $data) {
+  $node = node_load($context['nid']);
   $node->status = 1;
   $node->field_video_mp4[LANGUAGE_NONE][0]['url'] = $results['url_mp4'];
   $node->field_video_webm[LANGUAGE_NONE][0]['url'] = $results['url_webm'];

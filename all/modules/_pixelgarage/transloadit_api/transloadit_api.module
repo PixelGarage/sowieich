@@ -6,83 +6,23 @@
  * Time: 21:01
  */
 
-define('TRANSLOADIT_NOTIFY_PATH', 'transloadit/webhook');
+module_load_include('inc', 'transloadit_api', 'transloadit_api.methods');
+
+/**
+ * The notification path for the transloadit callbacks.
+ */
+define('TRANSLOADIT_NOTIFY_WEBHOOK', 'transloadit/webhook');
+
+/**
+ * The path to the directory, where the conversion (transcoding) results are
+ * stored.
+ */
+define('TRANSLOADIT_RESULT_PATH', 'public://transloadit');
+
 
 /* =============================================================================
- *   Hook implementation
+ *   Transloadit Library integration
  * ========================================================================== */
-/**
- * Implements hook_menu().
- */
-function transloadit_api_menu() {
-  $items['admin/config/services/transloadit_api'] = array(
-    'type' => MENU_NORMAL_ITEM,
-    'title' => 'Transloadit API Settings',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('transloadit_api_admin_settings_form'),
-    'file' => 'transloadit_api.admin.inc',
-    'access arguments' => array('edit transloadit api settings'),
-    'description' => 'Edit Stripe API credentials.',
-  );
-  $items['admin/config/services/transloadit_api/settings'] = array(
-    'title' => 'Transloadit',
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-    'weight' => -10,
-  );
-  $items[TRANSLOADIT_NOTIFY_PATH] = array(
-    'type' => MENU_CALLBACK,
-    'access callback' => TRUE,
-    'page callback' => '_transloadit_api_process_webhook_callback',
-  );
-  return $items;
-}
-
-/**
- * Processes incoming Transloadit webhooks.
- */
-function _transloadit_api_process_webhook_callback() {
-  //
-  // get the response object
-  $response = \transloadit\Transloadit::response();
-  if (isset($response->data['error'])) {
-    watchdog('TRANSLOADIT',
-      'Error @code: @msg',
-      array('@code' => $response->data['error'], '@msg' => $response->data['message']),
-      WATCHDOG_ERROR);
-    //
-    // webhook is invalid
-    drupal_add_http_header('Status', '403 Forbidden');
-    print 'Forbidden';
-    exit;
-  }
-  else if (isset($response->data['ok'])) {
-    watchdog('TRANSLOADIT', 'Status @code: @msg', array('@code' => $response->data['ok'], '@msg' => $response->data['message']), WATCHDOG_DEBUG);
-  }
-
-  // Invoke notification webhook for others to use.
-  module_invoke_all('transloadit_api_notification', $response->data['results'], $response->data);
-
-  // return code=200 with a string
-  print 'okay';
-}
-
-/**
- * Implements hook_transloadit_api_notification().
- */
-function transloadit_api_transloadit_api_notification($results, $data) {
-  //
-  // get the alterable state added in the request
-  $assembly_id = $data['assembly_id'];
-  $state = variable_get('transloadit_api_state_' . $assembly_id, false);
-
-  //
-  // call alter hook
-  if ($state) {
-    drupal_alter('transloadit_api_state', $state, $results, $data);
-    variable_del('transloadit_api_state_' . $assembly_id);  }
-}
-
-
 /**
  * Implements hook_libraries_info().
  */
@@ -111,99 +51,166 @@ function transloadit_api_version_callback() {
 }
 
 
-
 /* =============================================================================
- *   Transloadit API functions
+ *   Hook implementation
  * ========================================================================== */
 /**
- * Returns an instance of a \transloadit\Transloadit object with the key and secret set,
- * or false, if an error occurred.
- *
- * @return bool|\transloadit\Transloadit
+ * Implements hook_menu().
  */
-function transloadit_api_get_instance () {
-  $library = libraries_load('transloadit');
-  if ($library['loaded']) {
-    $transloadit = new \transloadit\Transloadit(array(
-      'key'    => variable_get('transloadit_api_auth_key'),
-      'secret' => variable_get('transloadit_api_auth_secret'),
-    ));
-    return $transloadit;
-  }
-
-  watchdog('TRANSLOADIT', 'The Transloadit library is not loaded.', array(), WATCHDOG_ERROR);
-  return false;
+function transloadit_api_menu() {
+  $items['admin/config/services/transloadit_api'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Transloadit API Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('transloadit_api_admin_settings_form'),
+    'file' => 'transloadit_api.admin.inc',
+    'access arguments' => array('edit transloadit api settings'),
+    'description' => 'Edit Stripe API credentials.',
+  );
+  $items['admin/config/services/transloadit_api/settings'] = array(
+    'title' => 'Transloadit',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items[TRANSLOADIT_NOTIFY_WEBHOOK] = array(
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+    'page callback' => '_transloadit_api_process_webhook_callback',
+  );
+  return $items;
 }
 
 /**
- * Executes the given assembly steps on all given files and returns the \transloadit\TransloaditResponse object.
- * The file transcoding can be performed asynchronously or synchronously. In case of an asynchronous execution, the result
- * of the transcoding is returned in the webhook callback (see API function).
- *
- * @param       $files
- *  An associative array of files to be uploaded. The key is used in the response as identification of the file.
- * @param       $template_id
- *  The template ID of a defined template in your transloadit account. Set it to null or an empty string
- *  if no template is available.
- * @param array $steps
- *  An associative array of transloadit assembly steps. In case of a given template ID the steps are merged (overridden)
- *  with the template steps. Default = array().
- * @param array $state
- *  An associative array holding the state that is going to be updated with the assembly result in
- *  the notification of an asynchronous transloadit request, e.g. a node id of the node that stores the converted files.
- *  The $state array is an input parameter of the hook_transloadit_api_state_alter($state).
- * @param bool  $async
- *  True, if the assembly is executed asynchronously. Default = true.
- *
- * @return bool|null|string|\transloadit\TransloaditResponse
- *  Returns false in case of an error, otherwise the \transloadit\TransloaditResponse object.
+ * Processes incoming Transloadit webhooks.
  */
-function transloadit_api_execute_assembly($files, $template_id, $steps = array(), $state = array(), $async = true) {
+function _transloadit_api_process_webhook_callback() {
   //
-  // get base url of server (can be overridden for localhost testing)
-  global $base_url;
-
-  //
-  // create params array
-  $params = array();
-  if (!empty($template_id)) {
-    $params['template_id'] = $template_id;
-  }
-  if (!empty($steps)) {
-    $params['steps'] = $steps;
-  }
-  if ($async) {
-    $localtunnel_url = variable_get('transloadit_api_localtunnel_url');
-    $baseurl = (strpos($base_url, 'localhost') && !empty($localtunnel_url)) ? $localtunnel_url : $base_url;
-    $params['notify_url'] = $baseurl . '/' . TRANSLOADIT_NOTIFY_PATH;
-  }
-
-  // create assembly options
-  $options = array(
-    'files' => $files,
-    'params' => $params,
-  );
-
-  //
-  // execute assembly
-  if ($transloadit = transloadit_api_get_instance()) {
-    $response = $transloadit->createAssembly($options);
-    if (isset($response->data['error'])) {
-      watchdog('TRANSLOADIT', 'Error @code: @msg', array('@code' => $response->data['error'], '@msg' => $response->data['message']), WATCHDOG_ERROR);
-      return false;
-    }
-    else if (isset($response->data['ok'])) {
-      watchdog('TRANSLOADIT', 'Status @code: @msg', array('@code' => $response->data['ok'], '@msg' => $response->data['message']), WATCHDOG_DEBUG);
-    }
-
+  // get the response object
+  $response = \transloadit\Transloadit::response();
+  if (isset($response->data['error'])) {
+    watchdog('Transloadit API',
+      'Error @code: @msg',
+      array(
+        '@code' => $response->data['error'],
+        '@msg' => $response->data['message']
+      ),
+      WATCHDOG_ERROR);
     //
-    // save the state array for the assembly
-    $assembly_id = $response->data['assembly_id'];
-    variable_set('transloadit_api_state_' . $assembly_id, $state);
-
-    return $response;
+    // webhook is invalid
+    drupal_add_http_header('Status', '403 Forbidden');
+    print 'Forbidden';
+    exit;
   }
   else {
-    return false;
+    if (isset($response->data['ok'])) {
+      watchdog('Transloadit API', 'Status @code: @msg', array(
+        '@code' => $response->data['ok'],
+        '@msg' => $response->data['message']
+      ), WATCHDOG_DEBUG);
+    }
+  }
+
+  //
+  // create transloadit result folder and .htaccess file, if not available
+  $transloadit_dir = TRANSLOADIT_RESULT_PATH;
+  if (!file_exists($transloadit_dir)) {
+    $success = file_prepare_directory($dir, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
+    if ($success) {
+      _transloadit_api_create_htaccess($dir, true);
+    }
+  }
+
+  //
+  // download the resulting files into result folder
+  $assembly_id = $response->data['assembly_id'];
+  $result_dir = TRANSLOADIT_RESULT_PATH . '/' . $assembly_id;
+  if (file_prepare_directory($result_dir, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
+    _transloadit_api_download_files($result_dir, $response->data['results']);
+  }
+
+  //
+  // Invoke notification webhook for others to use.
+  module_invoke_all('transloadit_api_notification', $response->data['results'], $response->data);
+
+  //
+  // return code=200 with a string
+  print 'okay';
+}
+
+/**
+ * Implements hook_transloadit_api_notification().
+ */
+function transloadit_api_transloadit_api_notification($results, $data) {
+  //
+  // get the alterable state added in the request
+  $assembly_id = $data['assembly_id'];
+  $context = variable_get('transloadit_api_context_' . $assembly_id, array());
+
+  //
+  // call transloadit context alter hook, if any
+  drupal_alter('transloadit_api_context', $context, $results, $data);
+  variable_del('transloadit_api_context_' . $assembly_id);
+}
+
+
+/**
+ * Creates a .htaccess file in the given directory to support video types.
+ *
+ * @param string $directory
+ *    The directory in which the .htaccess file is created.
+ * @param bool   $force_overwrite
+ *    Set to TRUE to attempt to overwrite the existing .htaccess file if one is
+ *    already present. Defaults to FALSE.
+ */
+function _transloadit_api_create_htaccess($directory, $force_overwrite = FALSE) {
+  $htaccess_path = $directory . '/.htaccess';
+  if (file_exists($htaccess_path) && !$force_overwrite) {
+    return;
+  }
+
+  // create .htaccess lines
+  $lines = <<<HTACCESS
+# Add video types to support
+AddType video/ogg .ogv
+AddType video/mp4 .mp4 .m4v
+AddType video/webm .webm
+SetEnvIfNoCase Request_URI \.(ogv|mp4|m4v|webm)$ no-gzip dont-vary
+HTACCESS;
+
+  // Write the .htaccess file.
+  if (file_put_contents($htaccess_path, $lines)) {
+    drupal_chmod($htaccess_path, 0444);
+  }
+  else {
+    $variables = array(
+      '%directory' => $directory,
+      '!htaccess' => '<br />' . nl2br(check_plain($lines))
+    );
+    watchdog('Transloadit API', "Video streaming warning: Couldn't write .htaccess file. Please create a .htaccess file in your %directory directory which contains the following lines: <code>!htaccess</code>", $variables, WATCHDOG_ERROR);
   }
 }
+
+/**
+ * Downloads the resulting files of the conversion (transcoding) steps.
+ *
+ * @param string $directory
+ *   The directory to store the downloads.
+ * @param array  $results
+ *   A reference to the results array of the assembly response.
+ */
+function _transloadit_api_download_files($directory, &$results) {
+  //
+  // loop through all steps with conversion results
+  foreach ($results as $step => &$result) {
+    $url = $result['url'];
+    $file_path = system_retrieve_file($url, $directory);
+    if ($file_path) {
+      $result['url'] = $file_path;
+    }
+    else {
+      watchdog('Transloadit API', 'File @url could not be downloaded', array('@url' => $url), WATCHDOG_ERROR);
+    }
+  }
+
+}
+
