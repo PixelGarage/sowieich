@@ -22,34 +22,29 @@ function transloadit_api_admin_settings_form($form, $form_state) {
   // Transloadit request
   $form['transloadit_api_request'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Transloadit Request Parameter'),
+    '#title' => t('Transloadit Request Parameters'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
     '#weight' => 10,
   );
-  $form['transloadit_api_auth_key'] = array(
+  $form['transloadit_api_request']['transloadit_api_auth_key'] = array(
     '#type' => 'textfield',
     '#title' => t('Transloadit authentication key'),
     '#default_value' => variable_get('transloadit_api_auth_key', ''),
-    '#fieldset' => 'transloadit_api_request',
   );
-  $form['transloadit_api_auth_secret'] = array(
+  $form['transloadit_api_request']['transloadit_api_auth_secret'] = array(
     '#type' => 'textfield',
     '#title' => t('Transloadit authentication secret'),
     '#default_value' => variable_get('transloadit_api_auth_secret', ''),
-    '#fieldset' => 'transloadit_api_request',
   );
-  $form['transloadit_api_localtunnel_url'] = array(
+  $form['transloadit_api_request']['transloadit_api_template_id'] = array(
     '#type' => 'textfield',
-    '#title' => t('Localtunnel URL'),
-    '#default_value' => variable_get('transloadit_api_localtunnel_url', ''),
-    '#description' => t('The Localtunnel URL used for testing the webhook locally. If you have !localtunnel installed, copy the returned Localtunnel URL here to be automatically used, if Drupal runs on localhost and Localtunnel is installed.', array(
-      '!localtunnel' => l(t('Localtunnel URL'), 'https://localtunnel.github.io/www/', array('attributes' => array('target' => '_blank'))),
-    )),
-    '#fieldset' => 'transloadit_api_request',
+    '#title' => t('Transloadit default template id'),
+    '#default_value' => variable_get('transloadit_api_template_id', ''),
+    '#description' => t('The default template to be used when processing files. The default template can be overridden in the API calls.'),
   );
   if (variable_get('transloadit_api_auth_secret', '')) {
-    $form['transloadit_api_test'] = array(
+    $form['transloadit_api_request']['transloadit_api_test'] = array(
       '#type' => 'button',
       '#value' => t('Test Transloadit Connection'),
       '#ajax' => array(
@@ -58,48 +53,60 @@ function transloadit_api_admin_settings_form($form, $form_state) {
         'method' => 'append',
       ),
       '#suffix' => '<div id="transloadit-connect-results"></div>',
-      '#fieldset' => 'transloadit_api_request',
     );
   }
 
+  $form['transloadit_api_webhook'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Transloadit Webhook'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#weight' => 20,
+  );
+  $form['transloadit_api_webhook']['transloadit_api_localtunnel_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Localtunnel URL'),
+    '#default_value' => variable_get('transloadit_api_localtunnel_url', ''),
+    '#description' => t('The Localtunnel URL used for testing the webhook locally. If you have !localtunnel installed, start a tunnel with the command "lt --port 80" in a terminal and copy the returned Localtunnel URL here.', array(
+      '!localtunnel' => l(t('Localtunnel'), 'https://localtunnel.github.io/www/', array('attributes' => array('target' => '_blank'))),
+    )),
+  );
   if ($lt_url = variable_get('transloadit_api_localtunnel_url', false)) {
-    $notification_url = $lt_url . '/transloadit/webhook';
+    $ide_key = $_COOKIE['XDEBUG_SESSION'];
+    $debug_param = $ide_key ? '?XDEBUG_SESSION_START=' . $ide_key : '';
+    $notification_url = $lt_url . '/' . TRANSLOADIT_NOTIFY_WEBHOOK . $debug_param;
   }
   else {
-    $notification_url = url('transloadit/webhook', array('absolute' => TRUE));
+    $notification_url = url(TRANSLOADIT_NOTIFY_WEBHOOK, array('absolute' => TRUE));
   }
-  $form['transloadit_api_webhook_url'] = array(
+  $form['transloadit_api_webhook']['transloadit_api_webhook_url'] = array(
     '#type' => 'textfield',
     '#disabled' => TRUE,
     '#title' => t('Notification URL (webhook)'),
     '#default_value' => $notification_url,
+    '#size' => 100,
     '#description' => t('The notification URL used for all transloadit asynchronous responses.'),
-    '#fieldset' => 'transloadit_api_request',
   );
 
   //
   // Transloadit export ftp account
   $form['transloadit_api_ftp_account'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Transloadit FTP account'),
+    '#title' => t('Transloadit export FTP account'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
     '#description' => t('The FTP account is used by Transloadit to export the conversion results. For a localhost server (see Localtunnel above), no export step is performed. In this case the returned file URLs are valid for 24 hours.'),
-    '#weight' => 20,
+    '#weight' => 30,
   );
-  $form['transloadit_api_ftp_user'] = array(
+  $form['transloadit_api_ftp_account']['transloadit_api_ftp_user'] = array(
     '#type' => 'textfield',
     '#title' => t('FTP user'),
-    '#default_value' => $notification_url,
     '#description' => t('The FTP user used for the Transloadit file export step.'),
-    '#fieldset' => 'transloadit_api_ftp_account',
   );
-  $form['transloadit_api_ftp_password'] = array(
+  $form['transloadit_api_ftp_account']['transloadit_api_ftp_password'] = array(
     '#type' => 'password_confirm',
     '#title' => t('FTP password'),
-    '#default_value' => $notification_url,
     '#description' => t('The FTP password used for thenTransloadit file export step.'),
-    '#fieldset' => 'transloadit_api_ftp_account',
   );
 
 
@@ -115,7 +122,7 @@ function _transloadit_api_admin_test_connection($form, $form_state) {
   $response = $request->request(array('method' => 'GET', 'path'   => $path), true);
 
   if ($response->data['ok'] === 'BILL_FOUND') {
-    $you = $response->data['to'];
+    $you = $response->data['to'] ? $response->data['to'] : 'You';
     $gb = $response->data['used_gb'];
     return t('Successful connection! @you used @gb GB this month.', array('@you' => $you, '@gb' => $gb));
   }

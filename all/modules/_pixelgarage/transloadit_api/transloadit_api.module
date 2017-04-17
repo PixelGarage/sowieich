@@ -72,20 +72,55 @@ function transloadit_api_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
   );
+  // Webhook
   $items[TRANSLOADIT_NOTIFY_WEBHOOK] = array(
     'type' => MENU_CALLBACK,
     'access callback' => TRUE,
     'page callback' => '_transloadit_api_process_webhook_callback',
   );
+  // test
+  $items['transloadit/test/%'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => '_transloadit_api_test_callback',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+  );
+
   return $items;
 }
+
+/**
+ * TEST function
+ *
+ * Allows to test the API function transloadit_api_execute_assembly() and the webhook
+ * by calling localhost/transloadit/test/%template-id%
+ */
+function _transloadit_api_test_callback($id) {
+  //
+  // check template id
+  $template_id = $id == 'default' ? '' : $id;
+  $context = array('test' => 'test');
+
+  //
+  // process test movie with default template
+  $movie_path = drupal_get_path('module', 'transloadit_api') . '/test/test-movie.mp4';
+  $files = array($movie_path);
+  if (!transloadit_api_execute_assembly($files, $template_id, null, $context)) {
+    print 'The video transcoding could not be performed. Check Transloadit settings and log messages.';
+  }
+  else {
+    print 'The video transcoding successfully started. ';
+  }
+}
+
 
 /**
  * Processes incoming Transloadit webhooks.
  */
 function _transloadit_api_process_webhook_callback() {
   //
-  // get the response object
+  // get the response object and check data
+  libraries_load('transloadit');
   $response = \transloadit\Transloadit::response();
   if (isset($response->data['error'])) {
     watchdog('Transloadit API',
@@ -114,11 +149,9 @@ function _transloadit_api_process_webhook_callback() {
   // create transloadit result folder and .htaccess file, if not available
   $transloadit_dir = TRANSLOADIT_RESULT_PATH;
   if (!file_exists($transloadit_dir)) {
-    $success = file_prepare_directory($dir, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
-    if ($success) {
-      _transloadit_api_create_htaccess($dir, true);
-    }
+    file_prepare_directory($transloadit_dir, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
   }
+  _transloadit_api_create_htaccess($transloadit_dir, false);
 
   //
   // download the resulting files into result folder
@@ -201,14 +234,19 @@ HTACCESS;
 function _transloadit_api_download_files($directory, &$results) {
   //
   // loop through all steps with conversion results
-  foreach ($results as $step => &$result) {
-    $url = $result['url'];
-    $file_path = system_retrieve_file($url, $directory);
-    if ($file_path) {
-      $result['url'] = $file_path;
-    }
-    else {
-      watchdog('Transloadit API', 'File @url could not be downloaded', array('@url' => $url), WATCHDOG_ERROR);
+  foreach ($results as $step => &$files) {
+    foreach ($files as  $index => &$file) {
+      $destination = $directory . '/' . $step . '_' . $file['name'];
+      $url = $file['url'];
+      $file_path = system_retrieve_file($url, $destination);
+      if ($file_path) {
+        $file_url = file_create_url($file_path);
+        $file['url'] = $file_url;
+        $file['ssl_url'] = $file_url;
+      }
+      else {
+        watchdog('Transloadit API', 'File @url could not be downloaded', array('@url' => $url), WATCHDOG_ERROR);
+      }
     }
   }
 

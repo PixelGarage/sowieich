@@ -25,7 +25,7 @@ function transloadit_api_get_instance() {
     return $transloadit;
   }
 
-  watchdog('TRANSLOADIT', 'The Transloadit library is not loaded.', array(), WATCHDOG_ERROR);
+  watchdog('Transloadit API', 'The Transloadit library is not loaded.', array(), WATCHDOG_ERROR);
   return FALSE;
 }
 
@@ -43,7 +43,7 @@ function transloadit_api_get_instance() {
  *     response as identification of the file.
  * @param string $template_id
  *     The template ID of a defined template in your transloadit account. Set
- *     it to null or an empty string if no template is available.
+ *     it to null or an empty string if the default template should be used.
  * @param array  $steps
  *     An associative array of transloadit assembly steps. In case of a given
  *     template ID the steps are merged (overridden) with the template steps.
@@ -61,24 +61,30 @@ function transloadit_api_get_instance() {
  *  Returns false in case of an error, otherwise the
  *  \transloadit\TransloaditResponse object.
  */
-function transloadit_api_execute_assembly($files, $template_id, $steps = array(), $context = array(), $async = TRUE) {
-  //
-  // get base url of server (can be overridden for localhost testing)
-  global $base_url;
-
+function transloadit_api_execute_assembly($files, $template_id = '', $steps = array(), $context = array(), $async = TRUE) {
   //
   // create params array
   $params = array();
+  $template_id = !empty($template_id) ? $template_id : variable_get('transloadit_api_template_id', '');
   if (!empty($template_id)) {
     $params['template_id'] = $template_id;
+  }
+  else if (empty($steps)) {
+    watchdog('Transloadit API', 'No template or assembly steps are defined.', array(), WATCHDOG_DEBUG);
+    return false;
   }
   if (!empty($steps)) {
     $params['steps'] = $steps;
   }
   if ($async) {
-    $localtunnel_url = variable_get('transloadit_api_localtunnel_url');
-    $baseurl = (strpos($base_url, 'localhost') && !empty($localtunnel_url)) ? $localtunnel_url : $base_url;
-    $params['notify_url'] = $baseurl . '/' . TRANSLOADIT_NOTIFY_PATH;
+    if ($lt_url = variable_get('transloadit_api_localtunnel_url', false)) {
+      $ide_key = $_COOKIE['XDEBUG_SESSION'];
+      $debug_param = $ide_key ? '?XDEBUG_SESSION_START=' . $ide_key : '';
+      $params['notify_url'] = $lt_url . '/' . TRANSLOADIT_NOTIFY_WEBHOOK . $debug_param;
+    }
+    else {
+      $params['notify_url'] = url(TRANSLOADIT_NOTIFY_WEBHOOK, array('absolute' => TRUE));
+    }
   }
 
   // create assembly options
@@ -92,7 +98,7 @@ function transloadit_api_execute_assembly($files, $template_id, $steps = array()
   if ($transloadit = transloadit_api_get_instance()) {
     $response = $transloadit->createAssembly($options);
     if (isset($response->data['error'])) {
-      watchdog('TRANSLOADIT', 'Error @code: @msg', array(
+      watchdog('Transloadit API', 'Error @code: @msg', array(
         '@code' => $response->data['error'],
         '@msg' => $response->data['message']
       ), WATCHDOG_ERROR);
@@ -100,7 +106,7 @@ function transloadit_api_execute_assembly($files, $template_id, $steps = array()
     }
     else {
       if (isset($response->data['ok'])) {
-        watchdog('TRANSLOADIT', 'Status @code: @msg', array(
+        watchdog('Transloadit API', 'Status @code: @msg', array(
           '@code' => $response->data['ok'],
           '@msg' => $response->data['message']
         ), WATCHDOG_DEBUG);

@@ -29,10 +29,10 @@ The module provides a simple abstraction of the Transloadit RESTful service usin
 2. The module provides two Transloadit API call methods (see transloadit_api.methods.inc):
   a) transloadit_api_get_instance(), returning an instance of \transloadit\Transloadit with the key and secret set.
   b) transloadit_api_execute_assembly($files, $template_id, $steps = array(), $context = array(), $async = true)
-     to upload files and process it with the defined template (transloadit user account) or the given assembly steps.
+     to upload the given files and process them with the defined template or the given assembly steps.
      Signature Authentication is automatically added.
 
-3. The module provides two hooks returning the transloadit response of an asynchronous conversion request .
+3. The module provides two hooks returning the transloadit conversion result of an asynchronous request in a response object.
     (see transloadit_api.api.php for further details)
 
 
@@ -46,9 +46,10 @@ npm install -g localtunnel
 
 Assuming your local server is running on port 80, just use the lt command to start the tunnel.
 
-lt --port 80
+lt --subdomain my-project --port 80
 
 Thats it! It will connect to the tunnel server, setup the tunnel, and tell you what url to use for your testing.
+The tunnel IP will always be the same, if you define a subdomain, e.g. http://my-project.localtunnel.me
 
 1. Copy this url to the Localtunnel URL field in the admin config form (admin/config/services/transloadit_api)
 2. All asynchronous calls will automatically use the tunnel for the assembly notification.

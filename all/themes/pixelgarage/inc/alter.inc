@@ -112,9 +112,8 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   $video = file_load($submission->data[2][0]);
   $video_path = file_create_url($video->uri);
   $files = array($video_path);
-  $template_id = '';
-  if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, $template_id, NULL, $context)) {
-    drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings.'), 'error', FALSE);
+  if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, '', NULL, $context)) {
+    drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings and log messages.'), 'error', FALSE);
   }
 
 }
@@ -134,10 +133,32 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
  * @see transloadit_api_execute_assembly()
  */
 function pixelgarage_transloadit_api_context_alter(&$context, $results, $data) {
-  $node = node_load($context['nid']);
-  $node->status = 1;
-  $node->field_video_mp4[LANGUAGE_NONE][0]['url'] = $results['url_mp4'];
-  $node->field_video_webm[LANGUAGE_NONE][0]['url'] = $results['url_webm'];
+  $nid = isset($context['test']) ? 41 : $context['nid'];
+  if ($nid) {
+    //
+    // load node and set status to 1
+    $node = node_load($nid);
+    $node->status = 1;
 
-  node_save($node);
+    // add downloaded video to node
+    $node->field_video_mp4[LANGUAGE_NONE][0]['url'] = $results['mp4'][0]['url'];
+    $node->field_video_webm[LANGUAGE_NONE][0]['url'] = $results['webm'][0]['url'];
+
+    // add poster image to node
+    $poster_url = $results['poster'][0]['url'];
+    $file = (object) array(
+      'filename' => basename($poster_url),
+      'uri' => $poster_url,
+      'filemime' => file_get_mimetype($poster_url),
+      'filesize' => filesize($poster_url),
+      'uid' => 1,
+      'status' => FILE_STATUS_PERMANENT,
+      'timestamp' => time()
+    );
+    $file = file_save($file);
+    $node->field_image[LANGUAGE_NONE][0]['fid'] = $file->fid;
+
+    // save node
+    node_save($node);
+  }
 }

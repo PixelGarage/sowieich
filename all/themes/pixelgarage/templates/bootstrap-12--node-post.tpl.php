@@ -22,10 +22,14 @@ $logo_url = file_create_url($logo_path . 'knh_logo_rgb_neg.png');
 $play_button = file_create_url($logo_path . 'icon-play.svg');
 $color_class = 'bg-color-' . mt_rand(0, 6);
 
-$video_path = 'public://videos/';
-$poster_img = file_create_url($video_path . 'ralph001.jpg');
-$mp4_source_url = file_create_url($video_path . 'ralph.mp4');
-$webm_source_url = file_create_url($video_path . 'ralph.webm');
+//
+// get video paths and poster image
+if (!empty($node->field_video_mp4)) {
+  $mp4_source_url = $node->field_video_mp4[LANGUAGE_NONE][0]['url'];
+}
+if (!empty($node->field_video_webm)) {
+  $webm_source_url = $node->field_video_webm[LANGUAGE_NONE][0]['url'];
+}
 ?>
 
 
@@ -46,7 +50,7 @@ $webm_source_url = file_create_url($video_path . 'ralph.webm');
       </div>
       <div class="inner-item">
         <!-- video frame -->
-        <video id="user-video" preload="auto" loop="loop" poster="<?php print $poster_img; ?>">
+        <video id="user-video" preload="auto">
           <source src="<?php print $mp4_source_url; ?>" type="video/mp4">
           <source src="<?php print $webm_source_url; ?>" type="video/webm">
           Your browser doesn't support HTML5 video tag.
