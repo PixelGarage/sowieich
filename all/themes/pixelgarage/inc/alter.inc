@@ -110,8 +110,7 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   // The converted videos are downloaded and made accessible by the assembly notification (webhook)
   $context = array('nid' => $post->nid);
   $video = file_load($submission->data[2][0]);
-  $video_path = file_create_url($video->uri);
-  $files = array($video_path);
+  $files = array($video->uri);
   if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, '', NULL, $context)) {
     drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings and log messages.'), 'error', FALSE);
   }
@@ -133,16 +132,16 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
  * @see transloadit_api_execute_assembly()
  */
 function pixelgarage_transloadit_api_context_alter(&$context, $results, $data) {
-  $nid = isset($context['test']) ? 41 : $context['nid'];
+  $nid = isset($context['nid']) ? $context['nid'] : 41;
   if ($nid) {
     //
     // load node and set status to 1
     $node = node_load($nid);
     $node->status = 1;
 
-    // add downloaded video to node
-    $node->field_video_mp4[LANGUAGE_NONE][0]['url'] = $results['mp4'][0]['url'];
-    $node->field_video_webm[LANGUAGE_NONE][0]['url'] = $results['webm'][0]['url'];
+    // add downloaded video path to node
+    $node->field_video_mp4[LANGUAGE_NONE][0]['value'] = $results['mp4'][0]['url'];
+    $node->field_video_webm[LANGUAGE_NONE][0]['value'] = $results['webm'][0]['url'];
 
     // add poster image to node
     $poster_url = $results['poster'][0]['url'];
@@ -156,7 +155,7 @@ function pixelgarage_transloadit_api_context_alter(&$context, $results, $data) {
       'timestamp' => time()
     );
     $file = file_save($file);
-    $node->field_image[LANGUAGE_NONE][0]['fid'] = $file->fid;
+    $node->field_image[LANGUAGE_NONE][0] = (array)$file;
 
     // save node
     node_save($node);

@@ -51,7 +51,7 @@
         $coloredSide = $videoContainer.find('.colored-side'),
         $playButton = $videoContainer.find('.play-button');
 
-      // click on play / pause button
+      // click on video element to play / pause video
       $videoContainer.once('click', function () {
         $videoContainer.on('click', function () {
           // toggle the play button
@@ -67,6 +67,12 @@
           }
           // don't propagate click event further up
           return false;
+        });
+
+        // show video controls when video ends
+        $(video).on('ended', function () {
+          $coloredSide.removeClass('hiding');
+          $playButton.removeClass('hiding');
         });
       });
 

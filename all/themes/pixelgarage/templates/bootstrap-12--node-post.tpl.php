@@ -24,11 +24,17 @@ $color_class = 'bg-color-' . mt_rand(0, 6);
 
 //
 // get video paths and poster image
+$video_poster = '';
+$mp4_source_url = '';
+$webm_source_url = '';
+if (!empty($node->field_image) && $img = file_load($node->field_image[LANGUAGE_NONE][0]['fid'])) {
+  $video_poster = file_create_url($img->uri);
+}
 if (!empty($node->field_video_mp4)) {
-  $mp4_source_url = $node->field_video_mp4[LANGUAGE_NONE][0]['url'];
+  $mp4_source_url = file_create_url($node->field_video_mp4[LANGUAGE_NONE][0]['value']);
 }
 if (!empty($node->field_video_webm)) {
-  $webm_source_url = $node->field_video_webm[LANGUAGE_NONE][0]['url'];
+  $webm_source_url = file_create_url($node->field_video_webm[LANGUAGE_NONE][0]['value']);
 }
 ?>
 
@@ -50,9 +56,9 @@ if (!empty($node->field_video_webm)) {
       </div>
       <div class="inner-item">
         <!-- video frame -->
-        <video id="user-video" preload="auto">
-          <source src="<?php print $mp4_source_url; ?>" type="video/mp4">
-          <source src="<?php print $webm_source_url; ?>" type="video/webm">
+        <video id="user-video" preload="auto" poster="<?php print $video_poster; ?>">
+          <?php if ($mp4_source_url): ?><source src="<?php print $mp4_source_url; ?>" type="video/mp4"><?php endif; ?>
+          <?php if ($webm_source_url): ?><source src="<?php print $webm_source_url; ?>" type="video/webm"><?php endif; ?>
           Your browser doesn't support HTML5 video tag.
         </video>
         <!-- video cover -->

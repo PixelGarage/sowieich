@@ -52,6 +52,8 @@ Thats it! It will connect to the tunnel server, setup the tunnel, and tell you w
 The tunnel IP will always be the same, if you define a subdomain, e.g. http://my-project.localtunnel.me
 
 1. Copy this url to the Localtunnel URL field in the admin config form (admin/config/services/transloadit_api)
-2. All asynchronous calls will automatically use the tunnel for the assembly notification.
+2. All webhook callbacks will automatically use the tunnel for the assembly notification.
+3. With transloadit/test/[%template_id% | default] you can start a test assembly with
+ the given template id on a test movie file.
 3. Close the terminal session to close the tunnel after testing (or use Ctrl+c in Terminal).
 

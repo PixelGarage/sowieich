@@ -240,9 +240,8 @@ function _transloadit_api_download_files($directory, &$results) {
       $url = $file['url'];
       $file_path = system_retrieve_file($url, $destination);
       if ($file_path) {
-        $file_url = file_create_url($file_path);
-        $file['url'] = $file_url;
-        $file['ssl_url'] = $file_url;
+        $file['url'] = $file_path;
+        $file['ssl_url'] = $file_path;
       }
       else {
         watchdog('Transloadit API', 'File @url could not be downloaded', array('@url' => $url), WATCHDOG_ERROR);

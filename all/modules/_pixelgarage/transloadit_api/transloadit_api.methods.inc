@@ -39,8 +39,8 @@ function transloadit_api_get_instance() {
  * functions).
  *
  * @param array  $files
- *     An associative array of files to be uploaded. The key is used in the
- *     response as identification of the file.
+ *        An array of locally accessible files to be uploaded. Local stream urls
+ *        are supported as well as relative file paths.
  * @param string $template_id
  *     The template ID of a defined template in your transloadit account. Set
  *     it to null or an empty string if the default template should be used.
@@ -49,10 +49,11 @@ function transloadit_api_get_instance() {
  *     template ID the steps are merged (overridden) with the template steps.
  *     Default = array().
  * @param array  $context
- *     An associative array holding the context of the transloadit conversion,
- *     e.g. a node id of the node that stores the converted files.
- *     This $context array is available in the response of an asynchronous
- *     assembly execution.
+ *     An associative array storing the context of the transloadit conversion request,
+ *     e.g. a node id of a node that stores the converted files.
+ *     This $context array is made available in the hook_transloadit_api_context_alter()
+ *     method called in the response of an asynchronous assembly execution and
+ *     guarantees a consistent request-response behaviour in an asynchronous environment.
  * @param bool   $async
  *     True, if the assembly is executed asynchronously, false otherwise.
  *     Default = true.
@@ -62,6 +63,15 @@ function transloadit_api_get_instance() {
  *  \transloadit\TransloaditResponse object.
  */
 function transloadit_api_execute_assembly($files, $template_id = '', $steps = array(), $context = array(), $async = TRUE) {
+  //
+  // create real file paths
+  $file_paths = array();
+  foreach ($files as $file) {
+    if ($filepath = drupal_realpath($file)) {
+      $file_paths[] = $filepath;
+    }
+  }
+
   //
   // create params array
   $params = array();
@@ -87,9 +97,10 @@ function transloadit_api_execute_assembly($files, $template_id = '', $steps = ar
     }
   }
 
+  //
   // create assembly options
   $options = array(
-    'files' => $files,
+    'files' => $file_paths,
     'params' => $params,
   );
 
