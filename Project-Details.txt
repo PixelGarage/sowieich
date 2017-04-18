@@ -15,6 +15,15 @@ ffmpeg -i test.mp4 -c:v libvpx -b:v 1M -c:a libvorbis -y test.webm
 ffmpeg -ss 00:00:02 -t 00:00:00.01 -i test.mp4 -r 30.0 test%03d.jpg
 
 
+Transloadit API Anbindung
+=========================
+Die Implementation des Transloadit-Services funktioniert auf dieser Webseite so:
+1) Der Benutzer macht einen Beitrag und lädt seinen Video auf unsere Webseite.
+2) Beim Absenden des Beitrags-Formulars wird der Video via obigem Service zu Transloadit geschickt. Der Beitrag wird erzeugt, aber ist auf der Webseite noch nicht sichtbar
+3) Transloadit transcodiert den Video in die Web-Formate (mp4 und webm), und extrahiert ein Bild aus dem Video als Beitrags-Poster.
+4) Der Service schickt unserem Server eine Nachricht, dass die Dateien verfügbar sind. Die resultierenden Dateien werden im Hintergrund auf sowieich.ch runtergeladen.
+5) Der gespeicherte Beitrag des Benutzer wird mit dem Bild und den Videos bestückt, und wird dann freigeschalten. Der Beitrag ist nun auf der Webseite sichtbar.
+
 
 Changes in Modules (Patches)
 ============================
