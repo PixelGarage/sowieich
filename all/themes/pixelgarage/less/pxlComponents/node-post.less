@@ -60,17 +60,19 @@
           &:before {
             content: '«';
             color: @pxl-color-violet;
+            padding-right: 0.1em;
           }
           &:after {
             content: '»';
             color: @pxl-color-violet;
+            padding-left: 0.1em;
           }
         }
       }
 
       .field-name-field-your-name {
         position: absolute;
-        bottom: 28%;
+        bottom: 25%;
         left: -10px;
         padding: 7px 20px;
         background-color: @pxl-color-violet;
@@ -82,7 +84,7 @@
         .field-item {
           width: auto;
           #pxl-mixins.text();
-          #pxl-mixins.font-size-responsive();
+          font-family: @pxl-text-font-bold;
           color: @pxl-color-white;
           white-space: nowrap;
         }
@@ -192,9 +194,11 @@
 
               &:before {
                 content: '«';
+                padding-right: 0.1em;
               }
               &:after {
                 content: '»';
+                padding-left: 0.1em;
               }
             }
           }

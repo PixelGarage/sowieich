@@ -10278,8 +10278,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-title h2 {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -10316,8 +10316,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -10362,8 +10362,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -10395,13 +10395,13 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body h4,
   .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body h4,
   .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body h5,
@@ -10434,7 +10434,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body h6,
   .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body .pxl-subtitle,
   .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
@@ -10469,8 +10469,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -10709,11 +10709,11 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 }
 .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body,
 .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-  padding: 30px 20px;
+  padding: 20px;
   background: #fff url(../images/bg_highlighted.png) repeat top left / 25%;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body p,
 .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body p {
@@ -10722,25 +10722,25 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 @media screen and (min-width: 30em) {
   .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body,
   .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-    padding: 30px 50px;
+    padding: 25px 50px;
   }
 }
 @media screen and (min-width: 48em) {
   .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body,
   .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-    padding: 30px 80px;
+    padding: 25px 80px;
   }
 }
 @media screen and (min-width: 64em) {
   .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body,
   .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-    padding: 30px 100px;
+    padding: 25px 100px;
   }
 }
 @media screen and (min-width: 80em) {
   .front .node.node-page.view-mode-full > .row > div.col-sm-12 > .field-name-body,
   .front .node.node-page.view-mode-default > .row > div.col-sm-12 > .field-name-body {
-    padding: 30px 150px;
+    padding: 25px 150px;
   }
 }
 .node.node-page.view-mode-full > .row > div.col-sm-12 > .paragraphs-items > .field-name-field-paragraphs > .field-items > .field-item:not(:last-child),
@@ -10766,8 +10766,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-webform .row .col-sm-6 .field-name-title h2 {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -10814,8 +10814,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -10860,8 +10860,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -10893,13 +10893,13 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-webform .row .col-sm-6 .field-name-body .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .node.node-webform .row .col-sm-12 .field-name-body h4,
   .node.node-webform .row .col-sm-6 .field-name-body h4,
   .node.node-webform .row .col-sm-12 .field-name-body h5,
@@ -10932,7 +10932,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   .node.node-webform .row .col-sm-6 .field-name-body h6,
   .node.node-webform .row .col-sm-12 .field-name-body .pxl-subtitle,
   .node.node-webform .row .col-sm-6 .field-name-body .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .node.node-webform .row .col-sm-12 .field-name-body p,
@@ -10967,8 +10967,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-webform .row .col-sm-6 .field-name-body .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -11209,7 +11209,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
  *  Node testimonial component
  * --------------------------------------------------*/
 .node.node-testimonial.view-mode-teaser {
-  overflow: visible;
+  overflow: hidden;
   margin: 0;
   padding-bottom: 125%;
   width: 100%;
@@ -11218,8 +11218,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-title h2 {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -11248,8 +11248,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -11281,8 +11281,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -11307,13 +11307,13 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h4,
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
@@ -11334,7 +11334,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h5,
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item h6,
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
@@ -11364,8 +11364,8 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -11555,13 +11555,19 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 }
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
     font-size: 3.125vw;
   }
@@ -11573,20 +11579,20 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 }
 @media screen and (min-width: 64em) {
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item p {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
   content: '#sowieich';
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
   color: #fff;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
     font-size: 3.125vw;
   }
@@ -11598,7 +11604,7 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 }
 @media screen and (min-width: 64em) {
   .node.node-testimonial.view-mode-teaser > .row > div.col-sm-12 > .field-name-body .field-item:after {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .testimonial-bg-color-0 .node.node-testimonial.view-mode-teaser {
@@ -11679,14 +11685,16 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-quote .field-item:before {
   content: '«';
   color: #c85094;
+  padding-right: 0.1em;
 }
 .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-quote .field-item:after {
   content: '»';
   color: #c85094;
+  padding-left: 0.1em;
 }
 .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name {
   position: absolute;
-  bottom: 28%;
+  bottom: 25%;
   left: -10px;
   padding: 7px 20px;
   background-color: #c85094;
@@ -11699,28 +11707,14 @@ body.front .shariff ul.orientation-horizontal li.shariff-button:not(:last-child)
 .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name .field-item {
   width: auto;
   font-family: 'BentonSansRegular', Arial, sans-serif;
+  font-size: 15px;
   letter-spacing: normal;
   line-height: 1.15em;
   text-align: left;
   color: #000;
-  font-size: 15px;
+  font-family: 'BentonSansBold', Arial, sans-serif;
   color: #fff;
   white-space: nowrap;
-}
-@media screen and (min-width: 40em) {
-  .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name .field-item {
-    font-size: 2.34375vw;
-  }
-}
-@media screen and (min-width: 48em) {
-  .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name .field-item {
-    font-size: 18px;
-  }
-}
-@media screen and (min-width: 64em) {
-  .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name .field-item {
-    font-size: 18px;
-  }
 }
 @media screen and (min-width: 40em) {
   .node.node-post.view-mode-teaser div.row div.col-sm-12 .field-name-field-your-name .field-item {
@@ -11824,9 +11818,9 @@ body.desktop .node.node-post.view-mode-teaser div.row div.col-sm-12:hover .play-
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item {
   position: relative;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item video,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item video {
@@ -11925,10 +11919,12 @@ body.desktop .node.node-post.view-mode-teaser div.row div.col-sm-12:hover .play-
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item:before,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item:before {
   content: '«';
+  padding-right: 0.1em;
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item:after,
 .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item .colored-side .field-name-field-quote .field-item:after {
   content: '»';
+  padding-left: 0.1em;
 }
 @media screen and (min-width: 640px) {
   .node.node-post.view-mode-full div.row div.col-sm-12 .inner-item .colored-side,
@@ -12047,8 +12043,8 @@ body.desktop .node.node-post.view-mode-default div.row div.col-sm-12 .inner-item
 .node.node-footer.view-mode-full > .row > div.col-sm-12 > .field-name-title h2 {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -13035,8 +13031,8 @@ form#user-login {
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -13094,8 +13090,8 @@ form#user-login {
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -13134,13 +13130,13 @@ form#user-login {
 .user-profile .row .col-sm-12 .field-name-field-short-description .field-item .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .user-profile .row .col-sm-4 .field-name-field-short-description .field-item h4,
   .user-profile .row .col-sm-8 .field-name-field-short-description .field-item h4,
   .user-profile .row .col-sm-12 .field-name-field-short-description .field-item h4,
@@ -13185,7 +13181,7 @@ form#user-login {
   .user-profile .row .col-sm-4 .field-name-field-short-description .field-item .pxl-subtitle,
   .user-profile .row .col-sm-8 .field-name-field-short-description .field-item .pxl-subtitle,
   .user-profile .row .col-sm-12 .field-name-field-short-description .field-item .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .user-profile .row .col-sm-4 .field-name-field-short-description .field-item p,
@@ -13225,8 +13221,8 @@ form#user-login {
 .user-profile .row .col-sm-12 .field-name-field-short-description .field-item .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -13549,8 +13545,8 @@ form#user-profile-form div fieldset.panel .panel-heading .panel-title,
 form#user-profile-form div #edit-account .panel-heading .panel-title {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -13947,8 +13943,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-title .field-item {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -13982,8 +13978,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -14015,8 +14011,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -14041,13 +14037,13 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item h4,
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item h5,
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item h6,
@@ -14068,7 +14064,7 @@ form#user-profile-form div .form-actions .form-submit .icon {
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item h5,
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item h6,
   .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item p {
@@ -14098,8 +14094,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-text-paragraph .row .col-sm-12 .field-name-field-text .field-item .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -14303,8 +14299,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-block-paragraph .row .col-sm-12 .field-name-field-title .field-item {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -14329,8 +14325,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-image-paragraph .row .col-sm-12 .field-name-field-title .field-item {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -14359,8 +14355,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .entity-paragraphs-item.paragraphs-item-bs-carousel-paragraph .row .col-sm-12 .field-name-field-title .field-item {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -14556,9 +14552,9 @@ form#user-profile-form div .form-actions .form-submit .icon {
   -moz-transition: opacity 1s;
   -o-transition: opacity 1s;
   transition: opacity 1s;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 @media screen and (min-width: 30em) {
   .view.view-proximity .view-content > .pe-container .pe-item {
@@ -14665,8 +14661,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .view.view-proximity .view-content > .pe-container .modal .modal-dialog .modal-content .modal-header h2.modal-title {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -14727,8 +14723,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
   border-radius: 6px;
   border: 2px solid #000;
   background-color: #000;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 .view.view-proximity .view-content > .pe-container .modal .modal-dialog .modal-content .modal-footer .btn:hover {
   color: #000;
@@ -14830,9 +14826,9 @@ form#user-profile-form div .form-actions .form-submit .icon {
   -moz-transition: opacity 1s;
   -o-transition: opacity 1s;
   transition: opacity 1s;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 @media screen and (min-width: 30em) {
   .view.view-postings .view-content > .pe-container .pe-item {
@@ -14939,8 +14935,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
 .view.view-postings .view-content > .pe-container .modal .modal-dialog .modal-content .modal-header h2.modal-title {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -15001,8 +14997,8 @@ form#user-profile-form div .form-actions .form-submit .icon {
   border-radius: 6px;
   border: 2px solid #000;
   background-color: #000;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
 }
 .view.view-postings .view-content > .pe-container .modal .modal-dialog .modal-content .modal-footer .btn:hover {
   color: #000;
@@ -15837,9 +15833,9 @@ form.webform-client-form div.form-actions a.done-link:hover {
 .webform-confirmation {
   padding: 30px 20px;
   background: #fff url(../images/bg_highlighted.png) repeat top left / 25%;
-  -webkit-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  -moz-box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
-  box-shadow: 2px 2px 4px rgba(100, 100, 100, 0.6);
+  -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
+  box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
   text-align: center;
 }
 .webform-confirmation h1,
@@ -15849,8 +15845,8 @@ form.webform-client-form div.form-actions a.done-link:hover {
   margin: 10px auto 20px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -15882,8 +15878,8 @@ form.webform-client-form div.form-actions a.done-link:hover {
   margin: 10px auto 20px;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
 }
@@ -15908,13 +15904,13 @@ form.webform-client-form div.form-actions a.done-link:hover {
 .webform-confirmation .pxl-subtitle {
   margin: 10px auto;
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .webform-confirmation h4,
   .webform-confirmation h5,
   .webform-confirmation h6,
@@ -15935,7 +15931,7 @@ form.webform-client-form div.form-actions a.done-link:hover {
   .webform-confirmation h5,
   .webform-confirmation h6,
   .webform-confirmation .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .webform-confirmation p {
@@ -15965,8 +15961,8 @@ form.webform-client-form div.form-actions a.done-link:hover {
 .webform-confirmation .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   color: #000;
   text-align: center;
 }
@@ -16514,8 +16510,8 @@ body .main-container .container-fluid #page-header .region-header h2.block-title
   margin: 20px 0 10px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -16543,8 +16539,8 @@ body .main-container .container-fluid .row section h1.page-header {
   margin: 20px 0 10px;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }

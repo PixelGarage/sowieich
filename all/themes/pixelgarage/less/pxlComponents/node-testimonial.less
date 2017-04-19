@@ -14,7 +14,7 @@
 // General settings
 // -------------------------
 .node.node-testimonial.view-mode-teaser {
-  overflow: visible;
+  overflow: hidden;
   margin: 0;
   padding-bottom: 125%;
   width: 100%;
@@ -37,6 +37,7 @@
 
           p {
             #pxl-mixins.subtitle();
+            #pxl-mixins.hyphenate();
           }
 
           &:after {

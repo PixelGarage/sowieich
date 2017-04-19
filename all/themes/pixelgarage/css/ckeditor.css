@@ -2369,8 +2369,8 @@
   margin: 20px auto;
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
@@ -2393,8 +2393,8 @@
   margin: 20px auto;
   font-family: 'BentonSansLight', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #fff;
   color: #000;
@@ -2416,13 +2416,13 @@
 }
 .pxl-subtitle {
   font-family: 'BentonSansRegular';
-  font-size: 18px;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: normal;
   line-height: 1.2em;
   text-align: left;
   color: #000;
 }
-@media screen and (min-width: 36em) {
+@media screen and (min-width: 40em) {
   .pxl-subtitle {
     font-size: 3.125vw;
   }
@@ -2434,7 +2434,7 @@
 }
 @media screen and (min-width: 64em) {
   .pxl-subtitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 .pxl-normal {
@@ -2463,8 +2463,8 @@
 .pxl-quote {
   font-family: 'BentonSansBold', Arial, sans-serif;
   font-size: 36px;
-  letter-spacing: 0.02em;
-  line-height: 1.4em;
+  letter-spacing: normal;
+  line-height: 1.2em;
   text-align: center;
   color: #000;
 }
