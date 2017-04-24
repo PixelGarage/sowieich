@@ -47,7 +47,7 @@
   Drupal.behaviors.playVideo = {
     attach: function(context) {
       var video = document.getElementById('user-video'),
-        $videoContainer = $('.node-post.view-mode-full').find('.inner-item'),
+        $videoContainer = $('.node-post.view-mode-full').find('.video-container'),
         $coloredSide = $videoContainer.find('.colored-side'),
         $playButton = $videoContainer.find('.play-button');
 

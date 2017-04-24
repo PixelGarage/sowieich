@@ -36,6 +36,14 @@ if (!empty($node->field_video_mp4)) {
 if (!empty($node->field_video_webm)) {
   $webm_source_url = file_create_url($node->field_video_webm[LANGUAGE_NONE][0]['value']);
 }
+
+//
+// add aspect-ratio classes
+$video_classes = 'hd-video';
+if (!empty($node->field_video_aspect_ratio)) {
+  $aspect_ratio = $node->field_video_aspect_ratio[LANGUAGE_NONE][0]['value'];
+  $video_classes .= ($aspect_ratio > 1) ? ' normal' : ' edge-wise';
+}
 ?>
 
 
@@ -54,7 +62,7 @@ if (!empty($node->field_video_webm)) {
       <div class="social-buttons">
         <div class="shariff" <?php print drupal_attributes($shariff_attrs); ?>></div>
       </div>
-      <div class="inner-item">
+      <div class="video-container <?php print $video_classes; ?>">
         <!-- video frame -->
         <video id="user-video" preload="auto" poster="<?php print $video_poster; ?>">
           <?php if ($mp4_source_url): ?><source src="<?php print $mp4_source_url; ?>" type="video/mp4"><?php endif; ?>

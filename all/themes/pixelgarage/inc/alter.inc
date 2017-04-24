@@ -132,12 +132,16 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
  * @see transloadit_api_execute_assembly()
  */
 function pixelgarage_transloadit_api_context_alter(&$context, $results, $data) {
-  $nid = isset($context['nid']) ? $context['nid'] : 41;
+  $nid = isset($context['nid']) ? $context['nid'] : null;
   if ($nid) {
     //
     // load node and set status to 1
     $node = node_load($nid);
     $node->status = 1;
+
+    // get aspect ratio
+    $aspect_ratio = (int)$results['mp4'][0]['meta']['width'] / (int)$results['mp4'][0]['meta']['height'];
+    $node->field_video_aspect_ratio[LANGUAGE_NONE][0]['value'] = $aspect_ratio;
 
     // add downloaded video path to node
     $node->field_video_mp4[LANGUAGE_NONE][0]['value'] = $results['mp4'][0]['url'];
