@@ -64,7 +64,7 @@ if (!empty($node->field_video_aspect_ratio)) {
       </div>
       <div class="video-container <?php print $video_classes; ?>">
         <!-- video frame -->
-        <video id="user-video" preload="auto" poster="<?php print $video_poster; ?>">
+        <video id="user-video" preload="auto" autoplay="autoplay" poster="<?php print $video_poster; ?>">
           <?php if ($mp4_source_url): ?><source src="<?php print $mp4_source_url; ?>" type="video/mp4"><?php endif; ?>
           <?php if ($webm_source_url): ?><source src="<?php print $webm_source_url; ?>" type="video/webm"><?php endif; ?>
           Your browser doesn't support HTML5 video tag.

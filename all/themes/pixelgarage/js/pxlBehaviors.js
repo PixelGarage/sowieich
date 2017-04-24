@@ -51,6 +51,12 @@
         $coloredSide = $videoContainer.find('.colored-side'),
         $playButton = $videoContainer.find('.play-button');
 
+      // check for autoplay
+      if (video.hasAttribute('autoplay')) {
+        $coloredSide.addClass('hiding');
+        $playButton.addClass('hiding');
+      }
+
       // click on video element to play / pause video
       $videoContainer.once('click', function () {
         $videoContainer.on('click', function () {
