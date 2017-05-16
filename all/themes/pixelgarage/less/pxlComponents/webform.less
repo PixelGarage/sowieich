@@ -72,7 +72,9 @@
 // Webform settings
 // -------------------------
 form.webform-client-form {
+  position: relative;
   margin-top: 20px;
+  padding-bottom: 80px;
 
   // all fieldsets
   fieldset.panel {
@@ -270,7 +272,7 @@ form.webform-client-form {
     }
 
     div.description, div.help-block {
-      display: block;
+      display: none;
       margin: 10px 0 0;
       font-family: @pxl-text-font-light;
       color: @webform-color-label;
@@ -433,6 +435,18 @@ form.webform-client-form {
     &.webform-component-markup {
       margin-bottom: 25px;
       padding-top: 15px;
+
+      &.webform-component--description {
+        margin: -20px 0 25px;
+        padding: 0;
+      }
+
+      &.webform-component--rechtliches {
+        position: absolute;
+        margin: 0;
+        bottom: 0;
+        left: 0;
+      }
 
       h2, strong {
         font-family: @pxl-text-font;

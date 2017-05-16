@@ -15064,7 +15064,9 @@ form#user-profile-form div .form-actions .form-submit .icon {
  *  Webform Addons component
  * --------------------------------------------------*/
 form.webform-client-form {
+  position: relative;
   margin-top: 20px;
+  padding-bottom: 80px;
 }
 form.webform-client-form fieldset.panel {
   margin: 0 auto 30px;
@@ -15356,7 +15358,7 @@ form.webform-client-form .webform-component label span.form-required {
 }
 form.webform-client-form .webform-component div.description,
 form.webform-client-form .webform-component div.help-block {
-  display: block;
+  display: none;
   margin: 10px 0 0;
   font-family: 'BentonSansLight', Arial, sans-serif;
   color: #000;
@@ -15627,6 +15629,16 @@ form.webform-client-form .webform-component .form-managed-file button.btn:focus 
 form.webform-client-form .webform-component.webform-component-markup {
   margin-bottom: 25px;
   padding-top: 15px;
+}
+form.webform-client-form .webform-component.webform-component-markup.webform-component--description {
+  margin: -20px 0 25px;
+  padding: 0;
+}
+form.webform-client-form .webform-component.webform-component-markup.webform-component--rechtliches {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  left: 0;
 }
 form.webform-client-form .webform-component.webform-component-markup h2,
 form.webform-client-form .webform-component.webform-component-markup strong {
