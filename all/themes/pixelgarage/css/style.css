@@ -11827,7 +11827,7 @@ body.desktop .node.node-post.view-mode-teaser div.row div.col-sm-12:hover .play-
   -webkit-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
   -moz-box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
   box-shadow: 4px 4px 15px rgba(100, 100, 100, 0.6);
-  background-color: black;
+  background-color: #d57c24;
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .video-container video,
 .node.node-post.view-mode-default div.row div.col-sm-12 .video-container video {

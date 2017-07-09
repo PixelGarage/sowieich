@@ -92,6 +92,7 @@ function transloadit_api_admin_settings_form($form, $form_state) {
 
   //
   // Transloadit export ftp account
+  /**
   $form['transloadit_api_ftp_account'] = array(
     '#type' => 'fieldset',
     '#title' => t('Transloadit export FTP account'),
@@ -110,7 +111,7 @@ function transloadit_api_admin_settings_form($form, $form_state) {
     '#title' => t('FTP password'),
     '#description' => t('The FTP password used for thenTransloadit file export step.'),
   );
-
+*/
 
   return system_settings_form($form);
 }
