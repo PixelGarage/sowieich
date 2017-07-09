@@ -7,11 +7,11 @@
 // shariff button definition
 libraries_load('shariff', 'naked');
 $shariff_attrs = array(
-  'data-services' => '["twitter","facebook","mail"]',
+  'data-services' => '["facebook","twitter","whatsapp","mail"]',
   'data-orientation' => "horizontal",
   'data-mail-url' => "mailto:",
-  'data-mail-subject' => variable_get('shariff_mail_subject', "SoWieIch Kindern in Not helfen..."),
-  'data-mail-body' => variable_get('shariff_mail_subject', "Die Kindernothilfe Schweiz ..."),
+  'data-mail-subject' => variable_get('shariff_mail_subject', t("#SoWieIch: Kindern in Not helfen...")),
+  'data-mail-body' => variable_get('shariff_mail_subject', t('Setz ein Zeichen gegen die Angst von Kindern. Zeige Deine Anteilnahme und lade Deine als Kind erlebte Angst auf unsere Plattform. Zeige mit einem kurzen Video, dass Dir die Angst von Kindern in Not auf der Welt nicht egal ist. Schaue dir https://sowieich.ch an.')),
   'data-lang' => "de",
 );
 

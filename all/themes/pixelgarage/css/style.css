@@ -9943,6 +9943,9 @@ body.front .shariff ul li a span.fa {
 body.front .shariff ul li a span.share_text {
   display: none;
 }
+body.desktop body.front .shariff ul li.whatsapp {
+  display: none;
+}
 body.front .shariff ul {
   z-index: 1050;
 }
@@ -11808,6 +11811,10 @@ body.desktop .node.node-post.view-mode-teaser div.row div.col-sm-12:hover .play-
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li a span.share_text,
 .node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li a span.share_text {
+  display: none;
+}
+body.desktop .node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul li.whatsapp,
+body.desktop .node.node-post.view-mode-default div.row div.col-sm-12 .social-buttons .shariff ul li.whatsapp {
   display: none;
 }
 .node.node-post.view-mode-full div.row div.col-sm-12 .social-buttons .shariff ul.orientation-horizontal li.shariff-button,
