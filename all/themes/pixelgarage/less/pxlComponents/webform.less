@@ -419,16 +419,20 @@ form.webform-client-form {
       }
 
       // upload button
-      button.btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin: 0;
-        .resp-submit-button();
-        padding: 0 12px;
-        #pxl-mixins.font-size-responsive(17px, 14px);
-        line-height: 1.2;
+      .input-group-btn {
+        position: static;
+
+        button.btn {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          margin: 0;
+          .resp-submit-button();
+          padding: 0 12px;
+          #pxl-mixins.font-size-responsive(17px, 14px);
+          line-height: 1.2;
+        }
       }
     }
 
