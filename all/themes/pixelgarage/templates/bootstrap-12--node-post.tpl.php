@@ -23,26 +23,34 @@ $play_button = file_create_url($logo_path . 'icon-play.svg');
 $color_class = 'bg-color-' . mt_rand(0, 6);
 
 //
-// get video paths and poster image
-$video_poster = '';
-$mp4_source_url = '';
-$webm_source_url = '';
-if (!empty($node->field_image) && $img = file_load($node->field_image[LANGUAGE_NONE][0]['fid'])) {
-  $video_poster = file_create_url($img->uri);
-}
-if (!empty($node->field_video_mp4)) {
-  $mp4_source_url = file_create_url($node->field_video_mp4[LANGUAGE_NONE][0]['value']);
-}
-if (!empty($node->field_video_webm)) {
-  $webm_source_url = file_create_url($node->field_video_webm[LANGUAGE_NONE][0]['value']);
-}
-
-//
-// add aspect-ratio classes
-$video_classes = 'hd-video';
-if (!empty($node->field_video_aspect_ratio)) {
+// prepare image or video display
+$is_video = false;
+if (isset($node->field_video_aspect_ratio[LANGUAGE_NONE][0]['value']) &&
+    !empty($node->field_video_aspect_ratio[LANGUAGE_NONE][0]['value'])) {
+  // video to be displayed
+  $is_video = true;
+  $media_classes = 'hd-video';
   $aspect_ratio = $node->field_video_aspect_ratio[LANGUAGE_NONE][0]['value'];
-  $video_classes .= ($aspect_ratio > 1) ? ' normal' : ' edge-wise';
+  $media_classes .= ($aspect_ratio > 1) ? ' normal' : ' edge-wise';
+
+  //
+  // get video paths and poster image
+  $video_poster = '';
+  $mp4_source_url = '';
+  $webm_source_url = '';
+  if (!empty($node->field_image) && $img = file_load($node->field_image[LANGUAGE_NONE][0]['fid'])) {
+    $video_poster = file_create_url($img->uri);
+  }
+  if (!empty($node->field_video_mp4)) {
+    $mp4_source_url = file_create_url($node->field_video_mp4[LANGUAGE_NONE][0]['value']);
+  }
+  if (!empty($node->field_video_webm)) {
+    $webm_source_url = file_create_url($node->field_video_webm[LANGUAGE_NONE][0]['value']);
+  }
+}
+else {
+  // image to be displayed
+  $media_classes = 'image';
 }
 ?>
 
@@ -55,21 +63,26 @@ if (!empty($node->field_video_aspect_ratio)) {
     <<?php print $central_wrapper; ?> class="col-sm-12 <?php print $central_classes; ?>">
     <?php if ($teaser): ?>
       <?php print $central; ?>
-      <div class="play-button">
+      <div class="play-button <?php print $media_classes; ?>">
         <img class="logo-hover" src="<?php print $play_button ?>"/>
       </div>
     <?php else: ?>
       <div class="social-buttons">
         <div class="shariff" <?php print drupal_attributes($shariff_attrs); ?>></div>
       </div>
-      <div class="video-container <?php print $video_classes; ?>">
-        <!-- video frame -->
-        <video id="user-video" preload="auto" autoplay="autoplay" poster="<?php print $video_poster; ?>">
-          <?php if ($mp4_source_url): ?><source src="<?php print $mp4_source_url; ?>" type="video/mp4"><?php endif; ?>
-          <?php if ($webm_source_url): ?><source src="<?php print $webm_source_url; ?>" type="video/webm"><?php endif; ?>
-          Your browser doesn't support HTML5 video tag.
-        </video>
-        <!-- video cover -->
+      <div class="media-container <?php print $media_classes; ?>">
+        <?php if ($is_video): ?>
+          <!-- video tag -->
+          <video id="user-video" preload="auto" autoplay="autoplay" poster="<?php print $video_poster; ?>">
+            <?php if ($mp4_source_url): ?><source src="<?php print $mp4_source_url; ?>" type="video/mp4"><?php endif; ?>
+            <?php if ($webm_source_url): ?><source src="<?php print $webm_source_url; ?>" type="video/webm"><?php endif; ?>
+            Your browser doesn't support HTML5 video tag.
+          </video>
+        <?php else: ?>
+          <!-- image tag -->
+          <?php print render($content['field_image']); ?>
+        <?php endif; ?>
+        <!-- media cover -->
         <div class="colored-side <?php print $color_class; ?>">
           <?php print render($content['field_your_name']); ?>
           <?php print render($content['field_quote']); ?>

@@ -51,7 +51,7 @@ header#navbar {
           height: @pxl-logo-height-small;
           width: auto;
 
-          @media @tablet {
+          @media @normal {
             height: @pxl-logo-height;
           }
         }
@@ -167,7 +167,8 @@ header#navbar {
           li {
             height: 70px;
 
-            a {
+            a, >span {
+              display: block;
               padding: 20px 15px;
               font-family: @pxl-text-font-bold;
               font-size: 30px;
@@ -186,6 +187,31 @@ header#navbar {
             &.menu-participate {
               display: none;
             }
+
+            ul.dropdown-menu {
+              position: absolute;
+              top: 100%;
+              #pxl-mixins.center-horizontally();
+              z-index: 100;
+              border: none;
+              #pxl-mixins.border-radius(0);
+              background: #fff url(../images/bg_highlighted.png) repeat top left / 100%;
+
+              li {
+                a {
+                  font-family: @pxl-text-font;
+                  color: white;
+                  font-size: 30px;
+                  letter-spacing: 0.032em;
+
+                  &:hover,
+                  &.active {
+                    font-family: @pxl-text-font-bold;
+                    letter-spacing: normal;
+                  }
+                }
+              }
+            }
           }
 
           @media @tablet {
@@ -197,9 +223,12 @@ header#navbar {
             li {
               height: 36px;
 
-              a {
+              a, >span {
+                display: block;
                 padding: 10px 15px;
+                font-family: @pxl-text-font-bold;
                 font-size: @font-size-base;
+                line-height: 1;
                 text-align: left;
               }
 
@@ -217,6 +246,15 @@ header#navbar {
                     border: 1px solid @pxl-color-green;
                     text-decoration: @link-decoration-hover;
                     background: none;
+                  }
+                }
+              }
+
+              ul.dropdown-menu {
+                top: 100%;
+                li {
+                  a {
+                    font-size: @font-size-base;
                   }
                 }
               }

@@ -1,0 +1,69 @@
+/*
+ *  Node campaign component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+.node.node-campaign.view-mode-full,
+.node.node-campaign.view-mode-default {
+  >.row {
+    >div.col-sm-12 {
+
+      >.field-name-title {
+        h2 {
+          #pxl-mixins.title();
+        }
+      }
+
+      >.field-name-field-image {
+        padding: 0;
+        margin: 0 0 30px;
+        #pxl-mixins.box-shadow(@pxl-box-shadow);
+
+        .field-item {
+          img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      >.field-name-body {
+        padding: 20px;
+        margin: 0 0 30px;
+        #pxl-mixins.wysiwyg-body();
+        background: #fff url(../images/bg_highlighted.png) repeat top left / 25%;
+        #pxl-mixins.box-shadow(@pxl-box-shadow);
+
+        p {
+          text-align: center;
+        }
+
+        @media @narrow {
+          padding: 25px 50px;
+        }
+        @media @tablet {
+          padding: 25px 80px;
+        }
+        @media @normal {
+          padding: 25px 100px;
+        }
+        @media @wide {
+          padding: 25px 150px;
+        }
+      }
+
+      // view styling see view-postings.less
+    }
+  }
+}

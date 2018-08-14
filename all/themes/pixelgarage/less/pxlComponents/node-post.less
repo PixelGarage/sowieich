@@ -75,6 +75,7 @@
         bottom: 25%;
         left: -10px;
         padding: 7px 20px;
+        max-width: 90%;
         background-color: @pxl-color-violet;
 
         @media @normal {
@@ -82,15 +83,21 @@
         }
 
         .field-item {
+          overflow: hidden;
           width: auto;
+          max-width: 100%;
           #pxl-mixins.text();
           font-family: @pxl-text-font-bold;
           color: @pxl-color-white;
           white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
       .play-button {
+        &.image {
+          display: none;
+        }
         .align-xy(absolute, 40%);
 
         img.logo-hover {
@@ -141,20 +148,27 @@
         }
       }
 
-      .video-container {
+      .media-container {
         position: relative;
         display: block;
         overflow: hidden;
         margin: 0;
         width: 100%;
         height: 0;
-        padding-bottom: 112.5%;
+        padding-bottom: 112.5%; // 2 * 56.25%
         #pxl-mixins.box-shadow(@pxl-box-shadow);
         background-color: @pxl-color-orange;
 
         video {
           display: block;
           margin: 0 auto;
+          width: 100%;
+          height: auto;
+        }
+
+        img {
+          display: block;
+          margin: 0;
           width: 100%;
           height: auto;
         }
@@ -178,11 +192,14 @@
             padding: 0 15px;
 
             .field-item {
+              width: 100%;
+              overflow: hidden;
               font-family: @pxl-text-font-bold;
               #pxl-mixins.font-size-responsive(24px, 24px, 16px);
               text-align: center;
               color: #fff;
               white-space: nowrap;
+              text-overflow: ellipsis;
             }
           }
 
@@ -244,7 +261,7 @@
         }
 
         @media @special-break {
-          padding-bottom: 56.25%;
+          padding-bottom: 56.25%; // 16:9 aspect-ratio
 
           &.edge-wise {
             padding-bottom: 56.25%;
@@ -252,6 +269,11 @@
             video {
               width: 31.64%; // 56.25 ^ 2
             }
+          }
+
+          img {
+            // fill left side with image
+            width: 56.25%;
           }
 
           .colored-side {
@@ -275,6 +297,8 @@
           }
         }
 
+        //
+        // play button styling
         .play-button {
           #pxl-mixins.center-xy(absolute);
           opacity: 1.0;
@@ -304,7 +328,8 @@
           }
         }
 
-        body.desktop &:hover {
+        // display video icon (hover) only for videos
+        body.desktop &.hd-video:hover {
           .play-button {
             img {
               &.logo-normal {

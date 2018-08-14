@@ -65,7 +65,7 @@ function transloadit_api_menu() {
     'page arguments' => array('transloadit_api_admin_settings_form'),
     'file' => 'transloadit_api.admin.inc',
     'access arguments' => array('edit transloadit api settings'),
-    'description' => 'Edit Stripe API credentials.',
+    'description' => 'Edit Transloadit API credentials.',
   );
   $items['admin/config/services/transloadit_api/settings'] = array(
     'title' => 'Transloadit',

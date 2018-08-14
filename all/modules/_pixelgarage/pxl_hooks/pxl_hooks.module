@@ -60,3 +60,27 @@ function pxl_hooks_theme() {
   );
 }
 
+/**
+ * Override front page according to campaign settings.
+ *
+ * @param $node
+ */
+function pxl_hooks_node_presave($node) {
+  if ($node->type != 'campaign') return;
+
+  if ($node->field_current_campaign[LANGUAGE_NONE][0]['value']) {
+    //
+    // reset current main campaign
+    $front_path = variable_get('site_frontpage');
+    $parts = explode('/', $front_path);
+    $current_nid = array_pop($parts);
+    $current_node = node_load($current_nid);
+    $current_node->field_current_campaign[LANGUAGE_NONE][0]['value'] = 0;
+    field_attach_update('node', $current_node);
+
+    //
+    // set new main campaign as front page
+    variable_set('site_frontpage', "node/{$node->nid}");
+  }
+
+}

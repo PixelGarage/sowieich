@@ -1,5 +1,5 @@
 <?php
-$export_time = 1491221006;
+$export_time = 1534245020;
 $data = array(
   'bundles' => array(
     'testimonial' => (object) array(
@@ -91,13 +91,89 @@ $data = array(
       'bundles' => array(
         'node' => array(
           0 => 'page',
-          1 => 'pxltest',
+          1 => 'article',
           2 => 'donate',
-          3 => 'webform',
-          4 => 'facebook_post',
-          5 => 'testimonial',
-          6 => 'twitter_user_profile',
-          7 => 'footer',
+          3 => 'footer',
+          4 => 'testimonial',
+          5 => 'webform',
+          6 => 'campaign',
+        ),
+      ),
+    ),
+    'field_campaign' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'target_type' => 'node',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'target_bundles' => array(
+            'campaign' => 'campaign',
+          ),
+          'sort' => array(
+            'type' => 'property',
+            'property' => 'title',
+            'direction' => 'ASC',
+          ),
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_campaign' => array(
+                'target_id' => 'field_campaign_target_id',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_campaign' => array(
+                'target_id' => 'field_campaign_target_id',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'table' => 'node',
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'field_name' => 'field_campaign',
+      'type' => 'entityreference',
+      'module' => 'entityreference',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'target_id' => array(
+          'description' => 'The id of the target entity.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+          1 => 'testimonial',
         ),
       ),
     ),
@@ -173,8 +249,7 @@ $data = array(
       ),
       'bundles' => array(
         'node' => array(
-          0 => 'facebook_post',
-          1 => 'testimonial',
+          0 => 'testimonial',
         ),
       ),
     ),
@@ -265,8 +340,7 @@ $data = array(
       ),
       'bundles' => array(
         'node' => array(
-          0 => 'facebook_post',
-          1 => 'testimonial',
+          0 => 'testimonial',
         ),
       ),
     ),
@@ -276,7 +350,7 @@ $data = array(
       0 => array(
         'label' => 'Body',
         'widget' => array(
-          'weight' => '5',
+          'weight' => '3',
           'type' => 'text_textarea_with_summary',
           'module' => 'text',
           'active' => 1,
@@ -319,7 +393,7 @@ $data = array(
           'teaser' => array(
             'label' => 'hidden',
             'type' => 'text_default',
-            'weight' => '1',
+            'weight' => '0',
             'settings' => array(),
             'module' => 'text',
           ),
@@ -340,11 +414,51 @@ $data = array(
         'deleted' => '0',
       ),
     ),
+    'field_campaign' => array(
+      0 => array(
+        'label' => 'Campaign',
+        'widget' => array(
+          'weight' => '1',
+          'type' => 'options_select',
+          'module' => 'options',
+          'active' => 1,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'entityreference_label',
+            'settings' => array(
+              'link' => FALSE,
+              'bypass_access' => FALSE,
+            ),
+            'module' => 'entityreference',
+            'weight' => 3,
+          ),
+          'teaser' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Select the campaign the testimonial should belong to.',
+        'default_value' => NULL,
+        'field_name' => 'field_campaign',
+        'entity_type' => 'node',
+        'bundle' => 'testimonial',
+        'deleted' => '0',
+      ),
+    ),
     'field_link' => array(
       0 => array(
         'label' => 'Link',
         'widget' => array(
-          'weight' => '3',
+          'weight' => '2',
           'type' => 'link_field',
           'module' => 'link',
           'active' => 0,
@@ -381,14 +495,15 @@ $data = array(
         'display' => array(
           'default' => array(
             'label' => 'above',
-            'type' => 'hidden',
+            'type' => 'link_default',
             'weight' => '2',
             'settings' => array(),
+            'module' => 'link',
           ),
           'teaser' => array(
             'label' => 'above',
             'type' => 'hidden',
-            'weight' => '8',
+            'weight' => '11',
             'settings' => array(),
           ),
         ),
@@ -449,13 +564,9 @@ $data = array(
           ),
           'teaser' => array(
             'label' => 'hidden',
-            'type' => 'image',
-            'weight' => '0',
-            'settings' => array(
-              'image_style' => 'testimonial',
-              'image_link' => '',
-            ),
-            'module' => 'image',
+            'type' => 'hidden',
+            'weight' => '2',
+            'settings' => array(),
           ),
         ),
         'required' => 0,

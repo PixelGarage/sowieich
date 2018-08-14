@@ -1,10 +1,10 @@
 <?php
-$export_time = 1491220753;
+$export_time = 1534245014;
 $data = array(
   'bundles' => array(
     'post' => (object) array(
       'type' => 'post',
-      'name' => 'Posting',
+      'name' => 'Post',
       'base' => 'node_content',
       'module' => 'node',
       'description' => 'Adds a new posting to the main grid.',
@@ -15,12 +15,89 @@ $data = array(
       'modified' => '1',
       'locked' => '0',
       'disabled' => '0',
-      'orig_type' => 'nebs_post',
+      'orig_type' => 'post',
       'disabled_changed' => FALSE,
       'bc_entity_type' => 'node',
     ),
   ),
   'fields' => array(
+    'field_campaign' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'target_type' => 'node',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'target_bundles' => array(
+            'campaign' => 'campaign',
+          ),
+          'sort' => array(
+            'type' => 'property',
+            'property' => 'title',
+            'direction' => 'ASC',
+          ),
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_campaign' => array(
+                'target_id' => 'field_campaign_target_id',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_campaign' => array(
+                'target_id' => 'field_campaign_target_id',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'table' => 'node',
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'field_name' => 'field_campaign',
+      'type' => 'entityreference',
+      'module' => 'entityreference',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'target_id' => array(
+          'description' => 'The id of the target entity.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+          1 => 'testimonial',
+        ),
+      ),
+    ),
     'field_e_mail' => array(
       'translatable' => '0',
       'entity_types' => array(),
@@ -59,97 +136,6 @@ $data = array(
           'type' => 'varchar',
           'length' => 255,
           'not null' => FALSE,
-        ),
-      ),
-      'bundles' => array(
-        'node' => array(
-          0 => 'post',
-        ),
-      ),
-    ),
-    'field_hires_image' => array(
-      'translatable' => '0',
-      'entity_types' => array(),
-      'settings' => array(
-        'uri_scheme' => 'private',
-        'default_image' => 0,
-      ),
-      'storage' => array(
-        'type' => 'field_sql_storage',
-        'settings' => array(),
-        'module' => 'field_sql_storage',
-        'active' => '1',
-        'details' => array(
-          'sql' => array(
-            'FIELD_LOAD_CURRENT' => array(
-              'field_data_field_hires_image' => array(
-                'fid' => 'field_hires_image_fid',
-                'alt' => 'field_hires_image_alt',
-                'title' => 'field_hires_image_title',
-                'width' => 'field_hires_image_width',
-                'height' => 'field_hires_image_height',
-              ),
-            ),
-            'FIELD_LOAD_REVISION' => array(
-              'field_revision_field_hires_image' => array(
-                'fid' => 'field_hires_image_fid',
-                'alt' => 'field_hires_image_alt',
-                'title' => 'field_hires_image_title',
-                'width' => 'field_hires_image_width',
-                'height' => 'field_hires_image_height',
-              ),
-            ),
-          ),
-        ),
-      ),
-      'foreign keys' => array(
-        'fid' => array(
-          'table' => 'file_managed',
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'field_name' => 'field_hires_image',
-      'type' => 'image',
-      'module' => 'image',
-      'active' => '1',
-      'locked' => '0',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'columns' => array(
-        'fid' => array(
-          'description' => 'The {file_managed}.fid being referenced in this field.',
-          'type' => 'int',
-          'not null' => FALSE,
-          'unsigned' => TRUE,
-        ),
-        'alt' => array(
-          'description' => 'Alternative image text, for the image\'s \'alt\' attribute.',
-          'type' => 'varchar',
-          'length' => 512,
-          'not null' => FALSE,
-        ),
-        'title' => array(
-          'description' => 'Image title text, for the image\'s \'title\' attribute.',
-          'type' => 'varchar',
-          'length' => 1024,
-          'not null' => FALSE,
-        ),
-        'width' => array(
-          'description' => 'The width of the image in pixels.',
-          'type' => 'int',
-          'unsigned' => TRUE,
-        ),
-        'height' => array(
-          'description' => 'The height of the image in pixels.',
-          'type' => 'int',
-          'unsigned' => TRUE,
         ),
       ),
       'bundles' => array(
@@ -245,8 +231,10 @@ $data = array(
       ),
       'bundles' => array(
         'node' => array(
-          0 => 'post',
-          1 => 'webform',
+          0 => 'article',
+          1 => 'post',
+          2 => 'webform',
+          3 => 'campaign',
         ),
       ),
     ),
@@ -302,6 +290,264 @@ $data = array(
         'value' => array(
           'type' => 'varchar',
           'length' => '100',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+        ),
+      ),
+    ),
+    'field_video' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'display_field' => 0,
+        'display_default' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_video' => array(
+                'fid' => 'field_video_fid',
+                'display' => 'field_video_display',
+                'description' => 'field_video_description',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_video' => array(
+                'fid' => 'field_video_fid',
+                'display' => 'field_video_display',
+                'description' => 'field_video_description',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'table' => 'file_managed',
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'field_name' => 'field_video',
+      'type' => 'file',
+      'module' => 'file',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'fid' => array(
+          'description' => 'The {file_managed}.fid being referenced in this field.',
+          'type' => 'int',
+          'not null' => FALSE,
+          'unsigned' => TRUE,
+        ),
+        'display' => array(
+          'description' => 'Flag to control whether this file should be displayed when viewing content.',
+          'type' => 'int',
+          'size' => 'tiny',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 1,
+        ),
+        'description' => array(
+          'description' => 'A description of the file.',
+          'type' => 'text',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+        ),
+      ),
+    ),
+    'field_video_aspect_ratio' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_video_aspect_ratio' => array(
+                'value' => 'field_video_aspect_ratio_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_video_aspect_ratio' => array(
+                'value' => 'field_video_aspect_ratio_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_video_aspect_ratio',
+      'type' => 'number_float',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+        ),
+      ),
+    ),
+    'field_video_mp4' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_video_mp4' => array(
+                'value' => 'field_video_mp4_value',
+                'format' => 'field_video_mp4_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_video_mp4' => array(
+                'value' => 'field_video_mp4_value',
+                'format' => 'field_video_mp4_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_video_mp4',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'post',
+        ),
+      ),
+    ),
+    'field_video_webm' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_video_webm' => array(
+                'value' => 'field_video_webm_value',
+                'format' => 'field_video_webm_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_video_webm' => array(
+                'value' => 'field_video_webm_value',
+                'format' => 'field_video_webm_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_video_webm',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
           'not null' => FALSE,
         ),
         'format' => array(
@@ -384,11 +630,57 @@ $data = array(
     ),
   ),
   'instances' => array(
+    'field_campaign' => array(
+      0 => array(
+        'label' => 'Campaign',
+        'widget' => array(
+          'weight' => '1',
+          'type' => 'options_select',
+          'module' => 'options',
+          'active' => 1,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'entityreference_label',
+            'settings' => array(
+              'link' => FALSE,
+              'bypass_access' => FALSE,
+            ),
+            'module' => 'entityreference',
+            'weight' => 21,
+          ),
+          'full' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+          'teaser' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_campaign',
+        'entity_type' => 'node',
+        'bundle' => 'post',
+        'deleted' => '0',
+      ),
+    ),
     'field_e_mail' => array(
       0 => array(
         'label' => 'E-mail',
         'widget' => array(
-          'weight' => '1',
+          'weight' => '2',
           'type' => 'email_textfield',
           'module' => 'email',
           'active' => 1,
@@ -421,7 +713,7 @@ $data = array(
           'full' => array(
             'label' => 'above',
             'type' => 'hidden',
-            'weight' => '18',
+            'weight' => '16',
             'settings' => array(),
           ),
           'teaser' => array(
@@ -440,64 +732,11 @@ $data = array(
         'deleted' => '0',
       ),
     ),
-    'field_hires_image' => array(
-      0 => array(
-        'label' => 'Postcard image',
-        'widget' => array(
-          'weight' => '7',
-          'type' => 'image_image',
-          'module' => 'image',
-          'active' => 1,
-          'settings' => array(
-            'progress_indicator' => 'throbber',
-            'preview_image_style' => 'thumbnail',
-          ),
-        ),
-        'settings' => array(
-          'file_directory' => 'postcards',
-          'file_extensions' => 'png gif jpg jpeg',
-          'max_filesize' => '20 MB',
-          'max_resolution' => '',
-          'min_resolution' => '',
-          'alt_field' => 0,
-          'title_field' => 0,
-          'default_image' => 0,
-          'user_register_form' => FALSE,
-        ),
-        'display' => array(
-          'default' => array(
-            'label' => 'above',
-            'type' => 'hidden',
-            'weight' => '17',
-            'settings' => array(),
-          ),
-          'full' => array(
-            'label' => 'above',
-            'type' => 'hidden',
-            'weight' => '16',
-            'settings' => array(),
-          ),
-          'teaser' => array(
-            'label' => 'above',
-            'type' => 'hidden',
-            'weight' => '15',
-            'settings' => array(),
-          ),
-        ),
-        'required' => 0,
-        'description' => 'Holds the high resolution image for the print.',
-        'ds_extras_field_template' => '',
-        'field_name' => 'field_hires_image',
-        'entity_type' => 'node',
-        'bundle' => 'post',
-        'deleted' => '0',
-      ),
-    ),
     'field_image' => array(
       0 => array(
         'label' => 'Image',
         'widget' => array(
-          'weight' => '4',
+          'weight' => '5',
           'type' => 'image_image',
           'module' => 'image',
           'active' => 1,
@@ -560,12 +799,12 @@ $data = array(
             'weight' => '0',
             'settings' => array(
               'image_style' => 'post_image',
-              'image_link' => 'content',
+              'image_link' => '',
             ),
             'module' => 'image',
           ),
         ),
-        'required' => 1,
+        'required' => 0,
         'description' => 'Add an image to the posting.',
         'field_name' => 'field_image',
         'entity_type' => 'node',
@@ -577,7 +816,7 @@ $data = array(
       0 => array(
         'label' => 'Quote',
         'widget' => array(
-          'weight' => '5',
+          'weight' => '4',
           'type' => 'text_textfield',
           'module' => 'text',
           'active' => 1,
@@ -635,6 +874,207 @@ $data = array(
         'deleted' => '0',
       ),
     ),
+    'field_video' => array(
+      0 => array(
+        'label' => 'Video',
+        'widget' => array(
+          'weight' => '6',
+          'type' => 'file_generic',
+          'module' => 'file',
+          'active' => 1,
+          'settings' => array(
+            'progress_indicator' => 'throbber',
+          ),
+        ),
+        'settings' => array(
+          'file_directory' => 'uploads',
+          'file_extensions' => 'mp3 mp4 ogg webm wav mov m4v',
+          'max_filesize' => '60 MB',
+          'description_field' => 0,
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '17',
+            'settings' => array(),
+          ),
+          'full' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '17',
+            'settings' => array(),
+          ),
+          'teaser' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '0',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Add a Videoto the post.',
+        'field_name' => 'field_video',
+        'entity_type' => 'node',
+        'bundle' => 'post',
+        'deleted' => '0',
+      ),
+    ),
+    'field_video_aspect_ratio' => array(
+      0 => array(
+        'label' => 'Video aspect ratio',
+        'widget' => array(
+          'weight' => '9',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '',
+          'max' => '',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'number_decimal',
+            'settings' => array(
+              'thousand_separator' => '',
+              'decimal_separator' => '.',
+              'scale' => 2,
+              'prefix_suffix' => TRUE,
+            ),
+            'module' => 'number',
+            'weight' => 20,
+          ),
+          'full' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+          'teaser' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_video_aspect_ratio',
+        'entity_type' => 'node',
+        'bundle' => 'post',
+        'deleted' => '0',
+      ),
+    ),
+    'field_video_mp4' => array(
+      0 => array(
+        'label' => 'Video MP4',
+        'widget' => array(
+          'weight' => '7',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'linkit' => array(
+            'enable' => 0,
+            'profile' => '',
+            'button_text' => 'Search',
+          ),
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'text_default',
+            'settings' => array(),
+            'module' => 'text',
+            'weight' => 18,
+          ),
+          'full' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+          'teaser' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Holds the mp4 video URL.',
+        'default_value' => NULL,
+        'field_name' => 'field_video_mp4',
+        'entity_type' => 'node',
+        'bundle' => 'post',
+        'deleted' => '0',
+      ),
+    ),
+    'field_video_webm' => array(
+      0 => array(
+        'label' => 'Video WEBM',
+        'widget' => array(
+          'weight' => '8',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'linkit' => array(
+            'enable' => 0,
+            'profile' => '',
+            'button_text' => 'Search',
+          ),
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'text_default',
+            'settings' => array(),
+            'module' => 'text',
+            'weight' => 19,
+          ),
+          'full' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+          'teaser' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Holds the webm coded video URL',
+        'default_value' => NULL,
+        'field_name' => 'field_video_webm',
+        'entity_type' => 'node',
+        'bundle' => 'post',
+        'deleted' => '0',
+      ),
+    ),
     'field_your_name' => array(
       0 => array(
         'label' => 'Your name',
@@ -658,7 +1098,7 @@ $data = array(
         ),
         'display' => array(
           'default' => array(
-            'label' => 'above',
+            'label' => 'hidden',
             'type' => 'text_default',
             'weight' => '2',
             'settings' => array(),

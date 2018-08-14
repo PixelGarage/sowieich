@@ -96,21 +96,40 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   $post->field_e_mail[LANGUAGE_NONE][0]['email'] = $submission->data[1][0]; // email
   $post->field_your_name[LANGUAGE_NONE][0]['value'] = $submission->data[4][0]; // your name
   $post->field_quote[LANGUAGE_NONE][0]['value'] = substr($submission->data[3][0], 0, 100); // Quote
-  $post->field_video[LANGUAGE_NONE][0]['fid'] = $submission->data[2][0]; // fid video
-  $post->field_video[LANGUAGE_NONE][0]['display'] = 1;  // used to save node successfully
+  //
+  // store image or video
+  $media = file_load($submission->data[2][0]);
+  $is_image = $media->filemime === 'image/jpeg' || $media->filemime === 'image/png';
+  if ($is_image) {
+    // media is an image, enable post immediately
+    $post->field_image[LANGUAGE_NONE][0]['fid'] = $submission->data[2][0]; // fid image
+    $post->status = 1;
+  }
+  else {
+    // media is a video
+    $post->field_video[LANGUAGE_NONE][0]['fid'] = $submission->data[2][0]; // fid video
+    $post->field_video[LANGUAGE_NONE][0]['display'] = 1;  // used to save node successfully
+  }
+
+  //
+  // add post to current campaign
+  $front_path = variable_get('site_frontpage');
+  $parts = explode('/', $front_path);
+  $campaign_nid = array_pop($parts);
+  $post->field_campaign[LANGUAGE_NONE][0]['target_id'] = $campaign_nid;
   $post = node_submit($post);
   node_save($post);
 
   //
   // add related post id to submission
   _set_webform_submission_value($node, $submission, 'post_nid', $post->nid);
+  if ($is_image) return;
 
   //
-  // start video conversion with transloadit.
+  // For all videos start video conversion with transloadit.
   // The converted videos are downloaded and made accessible by the assembly notification (webhook)
   $context = array('nid' => $post->nid);
-  $video = file_load($submission->data[2][0]);
-  $files = array($video->uri);
+  $files = array($media->uri);
   if (!module_exists('transloadit_api') || !transloadit_api_execute_assembly($files, '', NULL, $context)) {
     drupal_set_message(t('The video transcoding could not be performed. Check Transloadit settings and log messages.'), 'error', FALSE);
   }

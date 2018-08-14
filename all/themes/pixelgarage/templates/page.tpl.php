@@ -183,7 +183,7 @@
     <div class="<?php print $container_class; ?>">
       <?php print render($page['footer']); ?>
 
-      <?php if ($is_front): ?>
+      <?php if ($is_campaign_page): ?>
         <div class="shariff" <?php print $shariff_attributes; ?>></div>
       <?php endif; ?>
     </div>

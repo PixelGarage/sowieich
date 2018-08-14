@@ -25,7 +25,7 @@
    */
   Drupal.behaviors.shariffButtonOrientation = {
     attach: function(context) {
-      var $shariffButtons = $('body.front .shariff>ul');
+      var $shariffButtons = $('body.node-type-campaign .shariff>ul');
 
       // delete class of orientation
       $shariffButtons.removeClass('orientation-vertical').removeClass('orientation-horizontal')
@@ -47,19 +47,22 @@
   Drupal.behaviors.playVideo = {
     attach: function(context) {
       var video = document.getElementById('user-video'),
-        $videoContainer = $('.node-post.view-mode-full').find('.video-container'),
-        $coloredSide = $videoContainer.find('.colored-side'),
-        $playButton = $videoContainer.find('.play-button');
+        $mediaContainer = $('.node-post.view-mode-full').find('.media-container'),
+        $coloredSide = $mediaContainer.find('.colored-side'),
+        $playButton = $mediaContainer.find('.play-button');
+
+      // used only for videos
+      if (!video) return;
 
       // check for autoplay
-      if (video.hasAttribute('autoplay')) {
+      if (video && video.hasAttribute('autoplay')) {
         $coloredSide.addClass('hiding');
         $playButton.addClass('hiding');
       }
 
       // click on video element to play / pause video
-      $videoContainer.once('click', function () {
-        $videoContainer.on('click', function () {
+      $mediaContainer.once('click', function () {
+        $mediaContainer.on('click', function () {
           // toggle the play button
           if (video.paused || video.ended) {
             video.play();
