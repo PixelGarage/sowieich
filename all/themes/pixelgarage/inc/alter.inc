@@ -92,7 +92,6 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   node_object_prepare($post);
   //
   // update submission data on the post and save it
-  $post->title = t('@you hat Angst vor...', array('@you' => $submission->data[4][0])); // create node title
   $post->field_e_mail[LANGUAGE_NONE][0]['email'] = $submission->data[1][0]; // email
   $post->field_your_name[LANGUAGE_NONE][0]['value'] = $submission->data[4][0]; // your name
   $post->field_quote[LANGUAGE_NONE][0]['value'] = substr($submission->data[3][0], 0, 100); // Quote
@@ -112,10 +111,14 @@ function pixelgarage_webform_submission_presave_alter($node, &$submission) {
   }
 
   //
-  // add post to current campaign
+  // add post to current campaign and set campaign dependant post title
   $front_path = variable_get('site_frontpage');
   $parts = explode('/', $front_path);
   $campaign_nid = array_pop($parts);
+  $campaign_node = node_load($campaign_nid);
+  $title = (isset($campaign_node->field_social_media_title) && !empty($campaign_node->field_social_media_title[LANGUAGE_NONE][0]['value'])) ?
+    $campaign_node->field_social_media_title[LANGUAGE_NONE][0]['value'] : '@name erzählt...';
+  $post->title = t($title, array('@name' => $submission->data[4][0])); // create node title
   $post->field_campaign[LANGUAGE_NONE][0]['target_id'] = $campaign_nid;
   $post = node_submit($post);
   node_save($post);
