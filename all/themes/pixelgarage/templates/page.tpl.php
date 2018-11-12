@@ -72,6 +72,11 @@
  *
  * @ingroup templates
  */
+
+$logo_path = drupal_get_path('theme', 'pixelgarage') . '/images/';
+$slide_in_text = t('Bist Du für Bildung? Dann werde jetzt Lehrer-Patin oder Pate und unterstütze die Bildung von Kinder in Not mit Deiner Patenschaft.');
+$slide_in_image = file_create_url('public://images/rz_junge_vor_kreidetafel_rgb_1200px.jpg');
+$slide_in_close = file_create_url($logo_path . 'popup_close_white.svg');
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="<?php print $container_class; ?>">
@@ -177,6 +182,16 @@
     </div>
   </div>
 </div>
+
+<?php if ($is_front): ?>
+<div class="container-slide-in">
+  <a href="https://kindernothilfe.payrexx.com/de/pay?pid=99ed49e2" target="_blank">
+    <?php if ($slide_in_image): ?><img class="slide-in-image" src="<?php print $slide_in_image ?>"/><?php endif; ?>
+    <div class="slide-in-text"><?php print $slide_in_text ?></div>
+    <img class="slide-in-close" src="<?php print $slide_in_close ?>"/>
+  </a>
+</div>
+<?php endif; ?>
 
 <?php if (!empty($page['footer'])): ?>
   <footer class="footer">

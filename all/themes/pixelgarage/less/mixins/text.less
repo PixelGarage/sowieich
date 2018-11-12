@@ -116,6 +116,15 @@
     color: @text-color;
   }
 
+  .subtext() {
+    font-family: @pxl-text-font;
+    .font-size-responsive(@resp-subtext-size-max, @resp-subtext-size-med, @resp-subtext-size-min);
+    letter-spacing: @subtext-letter-spacing;
+    line-height: @subtext-line-height;
+    text-align: @subtext-text-align;
+    color: @text-color;
+  }
+
   .paragraph-first-letter() {
     p::first-letter {
       .title();

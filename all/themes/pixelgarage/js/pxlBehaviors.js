@@ -42,6 +42,34 @@
   };
 
   /**
+   * Shows the donation popup on a scroll event.
+   * @type {{}}
+   */
+  Drupal.behaviors.managePopup = {
+    attach: function(context) {
+      var $window = $(window),
+          $slide_in_popup = $('body').find('.container-slide-in'),
+          $closePopup = $slide_in_popup.find('.slide-in-close');
+
+      $window.on('scroll', function() {
+        if ($window.scrollTop() >= 50) {
+          $slide_in_popup.addClass('slide-in');
+        }
+        else if ($window.scrollTop() < 50) {
+          $slide_in_popup.removeClass('slide-in');
+        }
+      });
+
+      $closePopup.once('click', function() {
+        $closePopup.on('click', function() {
+          $slide_in_popup.addClass('invisible');
+          return false;
+        });
+      });
+    }
+  };
+
+  /**
    * Play the video on click
    */
   Drupal.behaviors.playVideo = {
